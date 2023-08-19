@@ -87,8 +87,8 @@ const Carousel = () => {
             className='w-full mySwipe h-[300px]'
         >
             {
-                datas.map((data) => (
-                    <SwiperSlide key={data.id} className='flex items-center justify-center h-full'>
+                datas.map((data, index) => (
+                    <SwiperSlide key={index} className='flex items-center justify-center h-full'>
                         {({ isActive }) => (
                             <div className={`!w-[500px] aspect-video`}>
                                 <img src={data.image} alt="" className='object-cover w-full h-full' />

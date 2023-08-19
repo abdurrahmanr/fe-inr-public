@@ -17,7 +17,7 @@ const BlogDetail = () => {
 
     return (
         <div className='w-full'>
-            <div className='px-[105px] mt-14 flex flex-col gap-3 w-full h-full'>
+            <div className='lg:px-[105px] mt-14 flex flex-col gap-3 w-full h-full'>
                 <p className='font-bold capitalize text-yellowSecondary'>{data[0]?.author}</p>
                 <p className='text-xs text-greyCol'>Posted on {data[0]?.date}</p>
                 <p className='text-3xl text-black leading-[48px] font-bold'>{data[0]?.title}</p>

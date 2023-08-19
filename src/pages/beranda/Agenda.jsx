@@ -13,7 +13,7 @@ const Agenda = () => {
             <div className='grid grid-cols-12 my-24'>
                 <div className='flex flex-col col-span-full lg:col-span-6'>
                     <p className={`${underlineTitle} font-semibold text-xl`}>Agenda</p>
-                    <div className='flex justify-center my-auto lg:mt-0 mt-10'>
+                    <div className='flex justify-center my-auto lg:mt-10'>
                         <div className='w-[338px] h-[409px] bg-primary rounded-[20px] shadow-xl overflow-hidden'>
                             <div className='w-full h-[164px]'>
                                 <img src={heroAgenda} alt="" className='object-cover w-full h-full' />

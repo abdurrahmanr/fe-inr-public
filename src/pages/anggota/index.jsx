@@ -1,23 +1,46 @@
+import karyaImg from '../../assets/img/karya.jpeg'
+import * as Tabs from '@radix-ui/react-tabs';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import StrukturCard from '../../components/profile/StrukturCard';
+
+const jenisKarya = ['angkatan pendiri', 'angkatan 1', 'angkatan 2', 'angkatan 3', 'angkatan 4', 'angkatan 5', 'angkatan 6', 'angkatan 7', 'angkatan 8', 'angkatan 9',]
+
 const Anggota = () => {
     return (
-        <>
-            {[1, 2].map((data) => (
-                // <div key={data} className='grid grid-cols-9 group first:bg-black'>
-                //     <div className='flex flex-col w-full h-full col-span-4 gap-3 px-6 text-white bg-black group-even:bg-primary capitalize rounded-[10px] py-11 group-odd:order-first group-even:order-last group-first:bg-red-500'>
-                //         <p className='text-xs font-semibold'>Inready Workgroup didirikan</p>
-                //         <p className='text-[10px]'>Lorem ipsum dolor sit amet consectetur. Odio quisque  arcu.</p>
-                //     </div>
-                //     <div className='relative flex items-end justify-center col-span-1'>
-                //         <div className='w-1 h-1/2 bg-primary'></div>
-                //         <div className='absolute self-center w-6 h-6 text-center bg-white rounded-full outline-1 outline outline-primary'></div>
-                //     </div>
-                //     <div className='flex items-center col-span-4 group-odd:order-last group-even:order-first group-even:justify-end group-odd:justify-start'>
-                //         <p>2007</p>
-                //     </div>
-                // </div>
-                <div key={data} className='w-10 h-10 first:bg-primary last:bg-red-500'></div>
-            ))}
-        </>
+        <div className='text-center w-full flex flex-col items-center my-24'>
+            <div className='font-semibold lg:w-[607px] w-11/12'>
+                <p className='leading-[26px] text-greyCol uppercase'>ANGGOTA KAMI</p>
+                <p className='text-2xl text-secondary leading-[62px] capitalize'>Anggota Inready Workgroup </p>
+                <p className='font-normal leading-9 normal-case text-greyCol/50'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered in some form, by injected humour</p>
+            </div>
+
+            <DropdownMenu.Root>
+                <DropdownMenu.Trigger asChild>
+                    <button className='px-5 py-3 text-xs leading-5 rounded-md bg-primary/20 mt-14'>Urutkan</button>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content className='w-full bg-white'>
+                    <DropdownMenu.Item>Periode</DropdownMenu.Item>
+                    <DropdownMenu.Item>Konsentrasi</DropdownMenu.Item>
+                </DropdownMenu.Content>
+            </DropdownMenu.Root>
+
+            <Tabs.Root defaultValue={jenisKarya[1]} className='mt-11 w-full'>
+                <div className='relative flex w-full overflow-x-scroll'>
+                    <Tabs.List className='flex justify-center gap-5 flex-shrink-0'>
+                        {jenisKarya.map((data) => (
+                            <Tabs.Trigger key={data} value={data} className='px-5 py-2 text-xs data-[state=active]:font-medium leading-5 capitalize rounded bg-[#F2F3F5] text-[#969696] data-[state=active]:bg-primary/20 data-[state=active]:text-yellowSecondary'>{data}</Tabs.Trigger>
+                        ))}
+                    </Tabs.List>
+                </div>
+                <div className="grid w-full grid-cols-1 my-7 lg:grid-cols-4 md:grid-cols-3 gap-x-6 gap-y-14">
+                    {[1, 2, 3, 4, 5, 6].map((data) => (
+                        <Tabs.Content className="relative flex justify-center" key={data} value='angkatan 1'>
+                            <StrukturCard />
+                        </Tabs.Content>
+                    ))}
+                </div>
+            </Tabs.Root>
+        </div>
     );
 }
 

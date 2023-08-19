@@ -30,10 +30,14 @@ body::-webkit-scrollbar {
     @apply bg-primary text-white rounded-[7px] py-2 px-4
 }
 
-details>summary {
-    list-style: none;
+.swiper-button-prev,
+.swiper-button-next {
+    -webkit-text-stroke-width: 3px;
+    width: 60px;
+    color: #fff;
 }
 
-details>summary::-webkit-details-marker {
-    display: none;
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 30px;
 }
