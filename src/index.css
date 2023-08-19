@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    /* scroll-behavior: smooth; */
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.swiper-pagination-bullet-active {
+    @apply !bg-primary
+}
+
+.swiper-pagination-bullet {
+    @apply bg-greyCol bg-opacity-50 !ms-4
+}
+
+.page-item {
+    @apply text-greyCol/50
+}
+
+.page-item.active {
+    @apply bg-primary text-white rounded-[7px] py-2 px-4
+}
+
+details>summary {
+    list-style: none;
+}
+
+details>summary::-webkit-details-marker {
+    display: none;
+}
