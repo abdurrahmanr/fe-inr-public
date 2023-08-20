@@ -10,10 +10,10 @@ const Hero = () => {
         <div className='relative h-[calc(100vh_-_80px)] bg-primary'>
             <Swiper
                 loop={true}
-                // autoplay={{
-                //     delay: 5000,
-                //     disableOnInteraction: false,
-                // }}
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }}
                 navigation={true}
                 effect={'fade'}
                 keyboard={true}
@@ -41,7 +41,7 @@ const Hero = () => {
                                             KESERUAN OUTDOOR INREADY WORKGROUP
                                         </p>
                                         <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                        <p className='text-white'>Selengkapnya</p>
+                                        <p className='text-white underline'>Selengkapnya</p>
                                     </div>
                                 </>
                             )}

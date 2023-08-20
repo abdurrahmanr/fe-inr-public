@@ -51,7 +51,7 @@ const Blog = () => {
 
     return (
         <Tabs.Root orientation='vertical' className='grid grid-cols-12 my-5 gap-x-0 lg:gap-x-12' defaultValue={categories[0].title}>
-            <Tabs.List className='inline-flex flex-col order-last gap-4 col-span-full lg:col-span-3'>
+            <Tabs.List className='inline-flex flex-col lg:order-last gap-4 col-span-full lg:col-span-3'>
                 <p className='text-sm font-bold'>Kategori</p>
                 {categories.map((category) => (
                     <Tabs.Trigger value={category.title} key={category.title} className='py-3 text-left data-[state=active]:bg-primary/30 rounded-[10px] px-3 group data-[state=inactive]:border-[0.5px] border-greyCol/50' onClick={() => { setSelected(category.title); setPage(0) }}>
@@ -66,15 +66,15 @@ const Blog = () => {
             </Tabs.List>
             <div className='mt-10 col-span-full lg:col-span-9 h-fit'>
                 <p className='text-2xl font-medium'>Blog Inready Workgroup</p>
-                <div className='grid grid-cols-12 grid-rows-4 gap-12 mt-16'>
+                <div className='grid grid-cols-12 grid-rows-4 lg:gap-12 mt-16 auto-rows-[100px]'>
                     {
                         filterData?.map((data) => (
-                            <Tabs.Content key={data.title} className='w-full col-span-full h-[274px] data-[state=inactive]:hidden hover:bg-greyCol/10 transition-all duration-500 rounded-small group' value={data.category}>
-                                <Link to={`${data.id}`} className='flex items-center w-full h-full gap-x-10'>
-                                    <div className='w-[234px] h-full overflow-hidden rounded-small'>
+                            <Tabs.Content key={data.title} className='w-full col-span-full h-full lg:h-[274px] data-[state=inactive]:hidden hover:bg-greyCol/10 transition-all duration-500 rounded-small group' value={data.category} asChild>
+                                <Link to={`${data.id}`} className='flex flex-col lg:flex-row items-center w-full h-full gap-x-0 lg:gap-x-10'>
+                                    <div className='lg:w-[234px] w-1/2 h-full overflow-hidden rounded-small'>
                                         <img src={heroBlog} alt="" className='object-cover w-full h-full transition-all duration-1000 group-hover:scale-105' />
                                     </div>
-                                    <div className='flex flex-col w-4/6 gap-4'>
+                                    <div className='flex flex-col w-4/6 gap-4 h-1/2'>
                                         <p className='text-xs font-semibold capitalize tracking-[3px] text-yellowSecondary'>{data.category}</p>
                                         <p className='mt-1 text-xs font-bold leading-7 text-secondary'>{data.title}</p>
                                         <p className='text-[10px] text-greyCol'>{data.description}</p>

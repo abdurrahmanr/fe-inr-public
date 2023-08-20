@@ -53,51 +53,80 @@ const datas = [
         id: 5,
         image: carousel5
     },
+    {
+        id: 1,
+        image: carousel1
+    },
+    {
+        id: 2,
+        image: carousel2
+    },
+    {
+        id: 3,
+        image: carousel3
+    },
+    {
+        id: 4,
+        image: carousel4
+    },
+    {
+        id: 5,
+        image: carousel5
+    },
 ]
 
 const Carousel = () => {
     return (
-        <Swiper
-            loop={true}
-            effect={'creative'}
-            keyboard={true}
-            oneWayMovement={true}
-            autoplay={{
-                delay: 1000,
-                disableOnInteraction: false,
-            }}
-            creativeEffect={{
-                limitProgress: 4,
-                prev: {
-                    scale: 0.85,
-                    translate: ["-95%", 0, 0],
-                    origin: 'left center'
-                },
-                next: {
-                    scale: 0.85,
-                    translate: ['95%', 0, 0],
-                    origin: 'right center'
-                },
-            }}
-            spaceBetween={10}
-            slidesPerView={4.25}
-            modules={[Pagination, Keyboard, Autoplay, EffectCreative]}
-            centeredSlides={true}
-            speed={1200}
-            className='w-full mySwipe h-[300px]'
-        >
-            {
-                datas.map((data, index) => (
-                    <SwiperSlide key={index} className='flex items-center justify-center h-full'>
-                        {({ isActive }) => (
+        <div className='relative h-full w-full flex justify-center py-20'>
+            <Swiper
+                loop={true}
+                effect={'creative'}
+                keyboard={true}
+                autoplay={{
+                    delay: 1000,
+                    disableOnInteraction: false,
+                }}
+                creativeEffect={{
+                    limitProgress: 4,
+                    prev: {
+                        scale: 0.85,
+                        translate: ["-95%", 0, 0],
+                        origin: 'left center'
+                    },
+                    next: {
+                        scale: 0.85,
+                        translate: ['95%', 0, 0],
+                        origin: 'right center'
+                    },
+                }}
+                pagination={{
+                    clickable: true,
+                    el: '.pagination',
+                }}
+                breakpoints={{
+                    1024: {
+                        slidesPerView: 4.25
+                    }
+                }}
+                spaceBetween={10}
+                slidesPerView={3}
+                modules={[Pagination, Keyboard, Autoplay, EffectCreative]}
+                centeredSlides={true}
+                speed={1200}
+                className=''
+            >
+                {
+                    datas.map((data, index) => (
+                        <SwiperSlide key={index} className='flex items-center justify-center overflow-hidden rounded-primary'>
                             <div className={`!w-[500px] aspect-video`}>
                                 <img src={data.image} alt="" className='object-cover w-full h-full' />
                             </div>
-                        )}
-                    </SwiperSlide>
-                ))
-            }
-        </Swiper>
+                        </SwiperSlide>
+                    ))
+                }
+            </Swiper>
+            <div className="absolute z-10 bottom-0 pagination text-primary !w-1/2 h-fit !mx-auto"></div>
+        </div>
     );
 }
 

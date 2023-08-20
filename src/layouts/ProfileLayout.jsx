@@ -10,7 +10,7 @@ const ProfileLayout = () => {
             <div className='mt-20 col-span-full lg:col-span-9'>
                 <Outlet />
             </div>
-            <div className='col-span-full lg:col-span-3 text-secondary'>
+            <div className='col-span-full lg:col-span-3 text-secondary lg:block hidden'>
                 <div className='w-fit ms-auto'>
                     <p className='text-xl font-medium'>Profile</p>
                     <div className='flex flex-col mt-10 gap-9'>
@@ -22,7 +22,7 @@ const ProfileLayout = () => {
                     </div>
                 </div>
             </div>
-            <div className={`${location.pathname.includes('struktur-organisasi') ? 'hidden' : ''} col-span-full -mx-5 -sm:mx-10 xl:-mx-[156px] 2xl:-mx-[348px]`}>
+            <div className={`${location.pathname.includes('struktur-organisasi') ? 'hidden' : ''} col-span-full -mx-5 -sm:mx-10 xl:-mx-[156px] 2xl:-mx-[348px] h-full`}>
                 <Carousel />
             </div>
         </div>

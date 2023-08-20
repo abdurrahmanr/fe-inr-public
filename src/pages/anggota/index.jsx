@@ -16,19 +16,19 @@ const Anggota = () => {
 
             <DropdownMenu.Root>
                 <DropdownMenu.Trigger asChild>
-                    <button className='px-5 py-3 text-xs leading-5 rounded-md bg-primary/20 mt-14'>Urutkan</button>
+                    <button className='px-5 py-3 text-xs leading-5 rounded-md bg-primary/20 mt-14 ml-auto relative z-30'>Urutkan</button>
                 </DropdownMenu.Trigger>
-                <DropdownMenu.Content className='w-full bg-white'>
-                    <DropdownMenu.Item>Periode</DropdownMenu.Item>
-                    <DropdownMenu.Item>Konsentrasi</DropdownMenu.Item>
+                <DropdownMenu.Content className='w-full bg-white border border-greyCol'>
+                    <DropdownMenu.Item className='py-4 px-6'>Periode</DropdownMenu.Item>
+                    <DropdownMenu.Item className='py-4 px-6'>Konsentrasi</DropdownMenu.Item>
                 </DropdownMenu.Content>
             </DropdownMenu.Root>
 
-            <Tabs.Root defaultValue={jenisKarya[1]} className='mt-11 w-full'>
+            <Tabs.Root defaultValue={jenisKarya[1]} className='mt-11 w-full relative z-0'>
                 <div className='relative flex w-full overflow-x-scroll'>
                     <Tabs.List className='flex justify-center gap-5 flex-shrink-0'>
                         {jenisKarya.map((data) => (
-                            <Tabs.Trigger key={data} value={data} className='px-5 py-2 text-xs data-[state=active]:font-medium leading-5 capitalize rounded bg-[#F2F3F5] text-[#969696] data-[state=active]:bg-primary/20 data-[state=active]:text-yellowSecondary'>{data}</Tabs.Trigger>
+                            <Tabs.Trigger key={data} value={data} className='px-5 py-2 text-xs data-[state=active]:font-medium leading-5 capitalize rounded bg-[#F2F3F5] text-[#969696] data-[state=active]:bg-primary/20 data-[state=active]:text-yellowSecondary cursor-pointer'>{data}</Tabs.Trigger>
                         ))}
                     </Tabs.List>
                 </div>
