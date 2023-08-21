@@ -9,23 +9,29 @@ import Karya from './karya/Karya';
 import Blog from './Blog';
 import Kegiatan from './Kegiatan';
 import Agenda from './Agenda';
+import SEOComponent from '../../components/SEO';
 
 const Beranda = () => {
     return (
-        <div className='h-fit'>
-            <Hero />
-            <div className='flex gap-[76px] py-[74px] justify-center flex-col lg:flex-row items-center'>
-                <Konsentrasi svg={webIcon} title='Web Development' description='Lorem Ipsum is simply' />
-                <Konsentrasi svg={designIcon} title='Design' description='Lorem Ipsum is simply' />
-                <Konsentrasi svg={mobileIcon} title='Mobile Applications' description='Lorem Ipsum is simply' />
+        <>
+            <SEOComponent
+                title='Inready Workgroup'
+            />
+            <div className='h-fit'>
+                <Hero />
+                <div className='flex gap-[76px] py-[74px] justify-center flex-col lg:flex-row items-center'>
+                    <Konsentrasi svg={webIcon} title='Web Development' description='Lorem Ipsum is simply' />
+                    <Konsentrasi svg={designIcon} title='Design' description='Lorem Ipsum is simply' />
+                    <Konsentrasi svg={mobileIcon} title='Mobile Applications' description='Lorem Ipsum is simply' />
+                </div>
+                <SeparatorComponent />
+                <Tentang />
+                <Karya />
+                <Blog />
+                <Kegiatan />
+                <Agenda />
             </div>
-            <SeparatorComponent />
-            <Tentang />
-            <Karya />
-            <Blog />
-            <Kegiatan />
-            <Agenda />
-        </div>
+        </>
     );
 }
 
