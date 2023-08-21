@@ -56,8 +56,9 @@ const router = createBrowserRouter(
   )
 );
 
+const helmetContext = {};
+
 function App() {
-  const helmetContext = {};
 
   return (
     <>
