@@ -5,12 +5,12 @@ const KegiatanDetail = () => {
     return (
         <>
             <SEOComponent
-                title={'Judul Kegiatan | Inready Workgroup'}
+                title={`${'Sosialisasi'} | Inready Workgroup`}
             />
             <div className='w-full'>
                 <div className='mt-20'>
                     <p className='text-xs'>Tahap Perekrutan</p>
-                    <p className='mt-2 text-2xl font-semibold'>Sosialisasi Inready Workgroup Periode 2023</p>
+                    <h1 className='mt-2 text-2xl font-semibold'>Sosialisasi Inready Workgroup Periode 2023</h1>
                     <div className='flex flex-col gap-10 mt-8 text-xs text-greyCol'>
                         <p>Lorem ipsum dolor sit amet consectetur. A at libero orci luctus sollicitudin posuere lectus libero pellentesque. Tempus tellus urna mauris molestie purus donec egestas. Morbi quisque magna lobortis urna fringilla eget sed etiam. Adipiscing etiam cursus nisl integer sociis augue eget donec. Lorem ipsum dolor sit amet consectetur. A at libero orci luctus sollicitudin posuere lectus libero pellentesque. Tempus tellus urna mauris molestie purus donec egestas. Morbi quisque magna lobortis urna fringilla eget sed etiam. Adipiscing etiam cursus nisl integer sociis augue eget donec.</p>
                         <p>Lorem ipsum dolor sit amet consectetur. A at libero orci luctus sollicitudin posuere lectus libero pellentesque. Tempus tellus urna mauris molestie purus donec egestas. Morbi quisque magna lobortis urna fringilla eget sed etiam. Adipiscing etiam cursus nisl integer sociis augue eget donec. Lorem ipsum dolor sit amet consectetur. A at libero orci luctus sollicitudin posuere lectus libero pellentesque. Tempus tellus urna mauris molestie purus donec egestas. Morbi quisque magna lobortis urna fringilla eget sed etiam. Adipiscing etiam cursus nisl integer sociis augue eget donec.</p>

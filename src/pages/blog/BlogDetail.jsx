@@ -19,13 +19,16 @@ const BlogDetail = () => {
     return (
         <>
             <SEOComponent
-                title='Judul Blog | Inready Workgroup'
+                title='Pengumuman Calon Angkatan Muda yang berhasil lolos ke Tahap Selanjutnya 1 | Inready Workgroup'
+                description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec. Scelerisque viverra mauris in aliquam sem. At risus viverra adipiscing at in tellus. Sociis natoque penatibus et magnis dis parturient montes. Ridiculus mus mauris vitae ultricies leo. Neque egestas congue quisque egestas diam. Risus in hendrerit gravida rutrum quisque non.'}
+                image={heroBlog}
+
             />
             <div className='w-full'>
                 <div className='lg:px-[105px] mt-14 px-6 flex flex-col gap-3 w-full h-full'>
                     <p className='text-sm font-bold capitalize text-yellowSecondary lg:text-base'>{data[0]?.author}</p>
                     <p className='text-xs text-greyCol'>Posted on {data[0]?.date}</p>
-                    <p className='text-2xl lg:text-3xl text-black lg:leading-[48px] leading-8 font-bold'>{data[0]?.title}</p>
+                    <h1 className='text-2xl lg:text-3xl text-black lg:leading-[48px] leading-8 font-bold'>{data[0]?.title}</h1>
                     <div>
                         <p className='capitalize'>{data[0]?.category}</p>
                     </div>

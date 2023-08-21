@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const SEOComponent = ({ title, description, name, type }) => {
+const SEOComponent = ({ title, description, name, type, image }) => {
     return (
         <Helmet>
             { /* Standard metadata tags */}
@@ -11,6 +11,7 @@ const SEOComponent = ({ title, description, name, type }) => {
             <meta property="og:type" content={type} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
+            <meta property="og:image" content={image} />
             { /* End Facebook tags */}
             { /* Twitter tags */}
             <meta name="twitter:creator" content={name} />
