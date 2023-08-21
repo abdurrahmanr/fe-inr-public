@@ -1,4 +1,4 @@
-import { Helmet } from 'react-hselmet-async';
+import { Helmet } from 'react-helmet-async';
 
 const SEOComponent = ({ title }) => {
     return (
