@@ -32,12 +32,12 @@ const Kegiatan = () => {
     //     )
     // }, [selected])
     return (
-        <>
+        <div className='w-full'>
             <SEOComponent
                 title={'Kegiatan | Inready Workgroup'}
             />
-            <div className='grid grid-cols-8 my-5 gap-x-0 lg:gap-x-12'>
-                <ul className='inline-flex flex-col order-last col-span-2 gap-4'>
+            <div className='grid grid-cols-8 my-12 gap-x-0 lg:gap-x-12'>
+                <ul className='flex-col order-last hidden col-span-2 gap-4 lg:inline-flex'>
                     <div className='flex items-center text-xs mt-14 text-greyCol'>
                         <p className=''>Filter <span className='ml-8 mr-2'>|</span></p>
                         <Dropdown
@@ -78,20 +78,20 @@ const Kegiatan = () => {
                             ))
                         }
                     </div>
-                    <ReactPaginate
-                        containerClassName={"pagination"}
-                        pageClassName={"page-item"}
-                        activeClassName={"active"}
-                        // onPageChange={(event) => setPage(event.selected)}
-                        pageCount={Math.ceil(2)}
-                        breakLabel="..."
-                        previousLabel='<'
-                        nextLabel='>'
-                        className='flex items-center gap-5 mt-10'
-                    />
                 </div>
             </div>
-        </>
+            <ReactPaginate
+                containerClassName={"pagination"}
+                pageClassName={"page-item"}
+                activeClassName={"active"}
+                // onPageChange={(event) => setPage(event.selected)}
+                pageCount={Math.ceil(6)}
+                breakLabel="..."
+                previousLabel='<'
+                nextLabel='>'
+                className='flex items-center gap-5 mx-auto mt-12 mb-24 w-fit'
+            />
+        </div>
     );
 }
 

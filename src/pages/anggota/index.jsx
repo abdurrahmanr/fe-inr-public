@@ -20,9 +20,9 @@ const Anggota = () => {
 
                 <DropdownMenu.Root>
                     <DropdownMenu.Trigger asChild>
-                        <button className='relative z-30 px-5 py-3 ml-auto text-xs leading-5 rounded-md bg-primary/20 mt-14'>Urutkan</button>
+                        <button className='relative px-5 py-3 ml-auto text-xs leading-5 rounded-md bg-primary/20 mt-14'>Urutkan</button>
                     </DropdownMenu.Trigger>
-                    <DropdownMenu.Content className='w-full bg-white border border-greyCol'>
+                    <DropdownMenu.Content className='relative z-10 w-full bg-white border border-greyCol'>
                         <DropdownMenu.Item className='px-6 py-4'>Periode</DropdownMenu.Item>
                         <DropdownMenu.Item className='px-6 py-4'>Konsentrasi</DropdownMenu.Item>
                     </DropdownMenu.Content>

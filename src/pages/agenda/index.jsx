@@ -13,11 +13,11 @@ const Agenda = () => {
             />
             <div className='my-24 h-fit'>
                 <p className='text-2xl font-semibold text-secondary'>Agenda Inready Workgroup Periode 2023</p>
-                <div className='mt-[71px] h-fit lg:h-[344px] w-full bg-primary rounded-[32px] overflow-hidden grid grid-cols-12 items-center px-6 lg:px-12'>
-                    <div className='flex items-center w-full overflow-hidden lg:w-1/2 col-span-full lg:col-span-5 rounded-2xl h-1/2'>
+                <div className='mt-[71px] bg-primary lg:py-12 rounded-[32px] lg:gap-x-12 overflow-hidden grid grid-cols-12 items-center px-0 lg:px-12'>
+                    <div className='flex items-center w-full h-56 overflow-hidden lg:h-60 col-span-full lg:col-span-5 lg:rounded-2xl'>
                         <img src={heroAgenda} alt="" className='object-cover w-full h-full' />
                     </div>
-                    <div className='flex flex-col gap-8 text-justify col-span-full lg:col-span-7 text-secondary'>
+                    <div className='flex flex-col w-full gap-6 p-8 text-justify lg:p-0 col-span-full lg:col-span-7 text-secondary lg:mt-0'>
                         <p className='text-xl font-semibold uppercase'>Presentasi karya</p>
                         <p className='text-xs'>Lorem ipsum dolor sit amet consectetur. A at libero orci luctus sollicitudin posuere lectus libero pellentesque. Tempus tellus urna mauris molestie purus donec egestas. Morbi quisque magna lobortis urna fringilla eget sed etiam.</p>
                         <p className='text-[13px]'>Kegiatan Dimulai dalam:</p>

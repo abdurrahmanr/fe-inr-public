@@ -1,11 +1,11 @@
 import { zeroPad } from 'react-countdown'
 
-const Renderer = ({ days, hours, minutes, seconds, completed, className }) => {
+const Renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
         return 'selesai';
     } else {
         return (
-            <div className='flex justify-between'>
+            <div className='flex justify-evenly'>
                 <div className='flex items-baseline font-semibold capitalize'>
                     <p className='text-2xl'>{zeroPad(days)}</p>
                     <p className='text-xs'>hari</p>
