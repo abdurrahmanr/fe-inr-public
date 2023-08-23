@@ -1,9 +1,9 @@
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+	createBrowserRouter,
+	createRoutesFromElements,
+	Route,
+	RouterProvider,
+} from 'react-router-dom';
 
 // layout
 import MainLayout from './layouts/MainLayout';
@@ -29,42 +29,44 @@ import KegiatanDetail from './pages/kegiatan/KegiatanDetail';
 import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<MainLayout />}>
-      <Route index element={<Beranda />} />
-      <Route element={<BreadcrumbLayout />}>
-        <Route path="anggota" element={<Anggota />} />
-        <Route path="blog">
-          <Route index element={<Blog />} />
-          <Route path=':id' element={<BlogDetail />} />
-        </Route>
-        <Route path="kegiatan">
-          <Route index element={<Kegiatan />} />
-          <Route path=':id' element={<KegiatanDetail />} />
-        </Route>
-        <Route path="karya" element={<Karya />} />
-        <Route path="Agenda" element={<Agenda />} />
-        <Route path="profile" element={<ProfileLayout />}>
-          <Route path='sejarah' element={<Sejarah />}></Route>
-          <Route path='visi-misi' element={<VisiMisi />}></Route>
-          <Route path='tentang' element={<Tentang />}></Route>
-          <Route path='struktur-organisasi' element={<Struktur />}></Route>
-        </Route>
-      </Route>
-      <Route path='*' element={<NotFound />} />
-    </Route>
-  )
+	createRoutesFromElements(
+		<Route path='/' element={<MainLayout />}>
+			<Route index element={<Beranda />} />
+			<Route element={<BreadcrumbLayout />}>
+				<Route path='anggota' element={<Anggota />} />
+				<Route path='blog'>
+					<Route index element={<Blog />} />
+					<Route path=':id' element={<BlogDetail />} />
+				</Route>
+				<Route path='kegiatan'>
+					<Route index element={<Kegiatan />} />
+					<Route path=':id' element={<KegiatanDetail />} />
+				</Route>
+				<Route path='karya' element={<Karya />} />
+				<Route path='Agenda' element={<Agenda />} />
+				<Route path='profile' element={<ProfileLayout />}>
+					<Route path='sejarah' element={<Sejarah />}></Route>
+					<Route path='visi-misi' element={<VisiMisi />}></Route>
+					<Route path='tentang' element={<Tentang />}></Route>
+					<Route
+						path='struktur-organisasi'
+						element={<Struktur />}
+					></Route>
+				</Route>
+			</Route>
+			<Route path='*' element={<NotFound />} />
+		</Route>
+	)
 );
 
 function App() {
-
-  return (
-    <>
-      <HelmetProvider>
-        <RouterProvider router={router} />
-      </HelmetProvider>
-    </>
-  )
+	return (
+		<>
+			<HelmetProvider>
+				<RouterProvider router={router} />
+			</HelmetProvider>
+		</>
+	);
 }
 
-export default App
+export default App;

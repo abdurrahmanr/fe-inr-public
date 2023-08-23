@@ -1,8 +1,5 @@
 const Category = () => {
-    return (
-        <>
-        </>
-    );
-}
+	return <></>;
+};
 
 export default Category;
