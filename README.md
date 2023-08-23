@@ -1,4 +1,4 @@
-![image description](./public/inr.png)
+![image description](./public/logo800.png.png)
 
 # Inready Workgroup
 
