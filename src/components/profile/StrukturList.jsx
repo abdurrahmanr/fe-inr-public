@@ -29,20 +29,26 @@ const StrukturList = ({ title, datas, divisi }) => {
 						<p className='text-xs capitalize text-greyCol'>
 							Divisi Keorganisasian
 						</p>
-						<div className='grid w-[calc(100%+500px)] grid-flow-col grid-cols-12 py-10'>
-							<div className='lg:col-span-2'>
+						<div className='grid w-full grid-flow-col grid-cols-12 py-10 lg:w-[calc(100%+500px)]'>
+							<div className='col-span-full lg:col-span-2'>
 								<StrukturCard />
 							</div>
 							<div className='col-span-full col-start-1 h-full w-full lg:col-start-5'>
 								<Swiper
 									spaceBetween={24}
 									slidesPerView={3.5}
-									className='h-full w-full'
-									navigation={{
-										nextEl: '.next',
-									}}
+									navigation
+									className='test h-full w-full select-none'
 									modules={[Navigation]}
+									slidesOffsetAfter={125}
+									grabCursor
 								>
+									<SwiperSlide className='h-full w-full'>
+										<StrukturCard />
+									</SwiperSlide>
+									<SwiperSlide className='h-full w-full'>
+										<StrukturCard />
+									</SwiperSlide>
 									<SwiperSlide className='h-full w-full'>
 										<StrukturCard />
 									</SwiperSlide>

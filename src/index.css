@@ -41,3 +41,22 @@ body::-webkit-scrollbar {
 .swiper-button-next:after {
 	font-size: 30px;
 }
+
+.test .swiper-button-prev,
+.test .swiper-button-next {
+	@apply mr-28;
+}
+
+.test .swiper-button-prev:after {
+	content: url('./assets/icons/test.svg');
+	display: inline-block;
+	transform: rotate(180deg);
+}
+
+.test .swiper-button-next:after {
+	content: url('./assets/icons/test.svg');
+}
+
+.test .swiper-button-disabled {
+	@apply hidden;
+}

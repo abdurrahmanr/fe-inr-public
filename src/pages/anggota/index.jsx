@@ -2,8 +2,9 @@ import * as Tabs from '@radix-ui/react-tabs';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import StrukturCard from '../../components/profile/StrukturCard';
 import SEOComponent from '../../components/SEO';
+import { useState } from 'react';
 
-const jenisKarya = [
+const angkatan = [
 	'angkatan pendiri',
 	'angkatan 1',
 	'angkatan 2',
@@ -17,6 +18,8 @@ const jenisKarya = [
 ];
 
 const Anggota = () => {
+	// const [active, setActive] = useState(angkatan[0]);
+
 	return (
 		<>
 			<SEOComponent title='Anggota | Inready Workgroup' />
@@ -35,29 +38,13 @@ const Anggota = () => {
 					</p>
 				</div>
 
-				<DropdownMenu.Root>
-					<DropdownMenu.Trigger asChild>
-						<button className='relative ml-auto mt-14 rounded-md bg-primary/20 px-5 py-3 text-xs leading-5'>
-							Urutkan
-						</button>
-					</DropdownMenu.Trigger>
-					<DropdownMenu.Content className='relative z-10 w-full border border-greyCol bg-white'>
-						<DropdownMenu.Item className='px-6 py-4'>
-							Periode
-						</DropdownMenu.Item>
-						<DropdownMenu.Item className='px-6 py-4'>
-							Konsentrasi
-						</DropdownMenu.Item>
-					</DropdownMenu.Content>
-				</DropdownMenu.Root>
-
 				<Tabs.Root
-					defaultValue={jenisKarya[1]}
+					defaultValue={angkatan[1]}
 					className='relative z-0 mt-11 w-full'
 				>
 					<div className='relative flex w-full overflow-x-scroll'>
 						<Tabs.List className='flex flex-shrink-0 justify-center gap-5'>
-							{jenisKarya.map((data) => (
+							{angkatan.map((data) => (
 								<Tabs.Trigger
 									key={data}
 									value={data}
