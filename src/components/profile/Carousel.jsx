@@ -109,7 +109,7 @@ const Carousel = () => {
 					},
 				}}
 				spaceBetween={10}
-				slidesPerView={3}
+				slidesPerView={'auto'}
 				modules={[Pagination, Keyboard, Autoplay, EffectCreative]}
 				centeredSlides={true}
 				speed={1200}
@@ -120,7 +120,7 @@ const Carousel = () => {
 						key={index}
 						className='flex items-center justify-center overflow-hidden rounded-primary'
 					>
-						<div className={`aspect-video !w-[500px]`}>
+						<div className={`aspect-video w-[250px] lg:!w-[500px]`}>
 							<img
 								src={data.image}
 								alt=''
@@ -130,7 +130,7 @@ const Carousel = () => {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='pagination absolute bottom-0 z-10 !mx-auto h-fit !w-1/2 text-primary'></div>
+			{/* <div className='pagination absolute bottom-0 z-10 !mx-auto h-fit !w-1/2 text-primary'></div> */}
 		</div>
 	);
 };

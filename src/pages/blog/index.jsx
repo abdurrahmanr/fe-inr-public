@@ -9,21 +9,27 @@ import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
 import SEOComponent from '../../components/SEO';
+import { boldNoRuin } from '../../utils';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const categories = [
 	{
+		id: 1,
 		title: 'event',
 		icon: eventIcon,
 	},
 	{
+		id: 2,
 		title: 'mobile',
 		icon: mobileIcon,
 	},
 	{
+		id: 3,
 		title: 'desain',
 		icon: designIcon,
 	},
 	{
+		id: 4,
 		title: 'web',
 		icon: webIcon,
 	},
@@ -58,13 +64,15 @@ const Blog = () => {
 				defaultValue={categories[0].title}
 			>
 				{/* tabs selector */}
-				<Tabs.List className='col-span-full inline-flex flex-col gap-4 lg:order-last lg:col-span-3'>
+				<Tabs.List className='col-span-full inline-flex flex-row items-center gap-4 lg:order-last lg:col-span-3 lg:flex-col lg:items-stretch'>
 					<p className='text-sm font-bold'>Kategori</p>
+
+					{/* desktop filter */}
 					{categories.map((category) => (
 						<Tabs.Trigger
 							value={category.title}
-							key={category.title}
-							className='group rounded-[10px] border-[0.5px] border-greyCol/50 px-3 py-3 text-left transition-all duration-500 hover:bg-primary/30 data-[state=active]:border-primary/30 data-[state=active]:bg-primary/30'
+							key={category.id}
+							className='group hidden rounded-[10px] border-[0.5px] border-greyCol/50 px-3 py-3 text-left transition-all duration-500 hover:bg-primary/30 data-[state=active]:border-primary/30 data-[state=active]:bg-primary/30 lg:block'
 							onClick={() => {
 								setSelected(category.title);
 								setPage(0);
@@ -82,6 +90,26 @@ const Blog = () => {
 							</div>
 						</Tabs.Trigger>
 					))}
+
+					{/* mobile filter */}
+					<DropdownMenu.Root>
+						<DropdownMenu.Trigger asChild>
+							<button className='relative ml-auto mr-7 block w-20 rounded-md bg-primary/20 px-5 py-3 text-xs capitalize leading-5 lg:mr-0 lg:hidden'>
+								{selected}
+							</button>
+						</DropdownMenu.Trigger>
+						<DropdownMenu.Content className='relative z-10 mt-4 flex animate-dropDownOut flex-col rounded-[7px] bg-white shadow outline outline-1 outline-[#D1D5DB] data-[state=open]:animate-dropDown'>
+							{categories.map((category) => (
+								<DropdownMenu.Item
+									key={category.title}
+									className={`px-6  py-4 capitalize hover:bg-primary hover:bg-opacity-20 hover:font-semibold ${boldNoRuin}`}
+									onClick={() => setSelected(category.title)}
+								>
+									{category.title}
+								</DropdownMenu.Item>
+							))}
+						</DropdownMenu.Content>
+					</DropdownMenu.Root>
 				</Tabs.List>
 
 				<div className='col-span-full mt-10 h-fit lg:col-span-9'>
@@ -93,7 +121,7 @@ const Blog = () => {
 						{filterData?.map((data) => (
 							<Tabs.Content
 								key={data.title}
-								className='group col-span-full rounded-small transition-all duration-500 hover:bg-greyCol/10 data-[state=inactive]:hidden'
+								className='group relative z-0 col-span-full rounded-small transition-all duration-500 hover:bg-greyCol/10 data-[state=inactive]:hidden'
 								value={data.category}
 								asChild
 							>
