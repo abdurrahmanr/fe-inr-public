@@ -29,7 +29,7 @@ const StrukturList = ({ title, datas, divisi }) => {
 						<p className='text-xs capitalize text-greyCol'>
 							Divisi Keorganisasian
 						</p>
-						<div className='grid w-full grid-flow-col grid-cols-12 py-10 lg:w-[calc(100%+500px)]'>
+						<div className='grid w-full grid-flow-col grid-cols-12 py-10 lg:w-[calc(100%+500px)] 2xl:w-[calc(100%+700px)] '>
 							<div className='col-span-full lg:col-span-2'>
 								<StrukturCard />
 							</div>

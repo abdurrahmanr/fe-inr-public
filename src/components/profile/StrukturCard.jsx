@@ -5,9 +5,9 @@ import igLogo from '../../assets/icons/ig.svg';
 
 const StrukturCard = () => {
 	return (
-		<div className='grid h-full w-full grid-cols-12 overflow-hidden rounded-primary border border-greyCol/20 '>
-			<div className='col-span-full flex h-full justify-center overflow-visible bg-primary'>
-				<img src={pengurus} alt='' className='h-full w-1/2' />
+		<div className='grid h-full w-full max-w-[243px] grid-cols-12 overflow-hidden rounded-primary border border-greyCol/20 '>
+			<div className='col-span-full flex h-[158px] w-full justify-center overflow-visible bg-primary'>
+				<img src={pengurus} alt='' className='h-full w-1/2 object-cover' />
 			</div>
 			<div className='col-span-full h-full overflow-hidden bg-white px-5 py-3 text-xs capitalize'>
 				<div className='flex flex-col gap-[6px] text-left'>
