@@ -42,7 +42,7 @@ const Anggota = () => {
 					defaultValue={angkatan[1]}
 					className='relative z-0 mt-11 w-full'
 				>
-					<div className='relative flex w-full overflow-x-scroll'>
+					<div className='relative flex w-full overflow-x-auto'>
 						<Tabs.List className='flex flex-shrink-0 justify-center gap-5'>
 							{angkatan.map((data) => (
 								<Tabs.Trigger
