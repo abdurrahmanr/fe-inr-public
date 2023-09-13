@@ -27,7 +27,7 @@ const Tentang = () => {
 							untuk mengembangkan wawasan dan kemampuan baik itu
 							dalam bidang IT maupun keorganisasian anggotanya....
 						</p>
-						<Button title='Selengkapnya' link='/profile/tentang' />
+						<Button title='Selengkapnya' link='/profile/tentang' className='bg-primary px-6' />
 					</div>
 				</div>
 			</div>

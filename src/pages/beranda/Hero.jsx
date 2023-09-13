@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-import heroImage from '../../assets/img/hero.jpeg';
 import {
 	Navigation,
 	Pagination,
@@ -9,8 +8,14 @@ import {
 	EffectFade,
 	Autoplay,
 } from 'swiper/modules';
+import Button from '../../components/Button';
+import useSWR from 'swr';
+import { BASE_URL, fetcher } from '../../utils';
 
 const Hero = () => {
+
+	const { data } = useSWR(`${BASE_URL}/home/slider`, fetcher);
+
 	return (
 		<div className='relative h-[calc(100vh_-_80px)] bg-primary'>
 			<Swiper
@@ -36,45 +41,41 @@ const Hero = () => {
 				slidesPerView={1}
 				className='mySwipe h-full'
 			>
-				{[1, 2].map((data) => (
+				{data?.data.map((slide) => (
 					<SwiperSlide
-						key={data}
+						key={slide.id}
 						className='grid grid-cols-2 items-center'
 					>
 						{({ isActive }) => (
 							<>
 								<div className='col-span-full flex h-full w-full items-end lg:col-span-1'>
-									<div className='relative h-4/5 w-full overflow-hidden rounded-tl-[63px]'>
+									<div className='relative h-full lg:h-4/5 w-full overflow-hidden lg:rounded-tl-[63px] after:bg-black/75 after:h-full after:w-full after:block after:absolute after:top-0 lg:after:bg-transparent'>
 										<img
-											src={heroImage}
+											src={slide.image}
 											alt=''
-											className={`${
-												isActive
-													? 'scale-125'
-													: 'scale-100'
-											} h-full w-full object-cover transition-transform duration-[5000ms] ease-in-out`}
+											className={`${isActive
+												? 'scale-125'
+												: 'scale-100'
+												} h-full w-full object-cover transition-transform duration-[5000ms] ease-in-out`}
 										/>
 									</div>
 								</div>
 								<div
-									className={`${
-										isActive
-											? '-translate-y-3 opacity-100 transition-transform duration-1000 ease-in-out'
-											: 'opacity-0'
-									} -order-1 col-span-full flex h-full w-full flex-col justify-center gap-7 px-32 text-xs text-greyCol lg:col-span-1`}
+									className={`${isActive
+										? '-translate-y-3 opacity-100 transition-transform duration-1000 ease-in-out'
+										: 'opacity-0'
+										} -order-1 col-span-full flex h-full w-full flex-col justify-center gap-7 px-8 lg:px-32 text-xs text-white lg:col-span-1 lg:relative absolute`}
 								>
-									<p>31 Oktober 2022</p>
+									<p>{slide.date}</p>
 									<p
-										className={`text-3xl font-bold tracking-[1.2px] text-yellowSecondary`}
+										className={`text-2xl lg:text-3xl font-bold tracking-[1.2px] text-yellowSecondary`}
 									>
-										KESERUAN OUTDOOR INREADY WORKGROUP
+										{slide.title}
 									</p>
-									<p>
-										Lorem ipsum dolor sit amet consectetur.
+									<p className='mb-72 lg:mb-0'>
+										{slide.description}
 									</p>
-									<p className='text-white underline'>
-										Selengkapnya
-									</p>
+									<Button title={'Selengkapnya'} className='bg-transparent -mt-32 lg:mt-0 text-yellowSecondary lg:text-white px-0 lg:px-6 lg:bg-secondary' />
 								</div>
 							</>
 						)}

@@ -11,7 +11,7 @@
 }
 
 body::-webkit-scrollbar {
-	display: none;
+	@apply hidden;
 }
 
 .swiper-pagination-bullet-active {

@@ -6,7 +6,7 @@ import webIcon from '../../assets/icons/web.svg';
 import Tentang from './Tentang';
 import SeparatorComponent from '../../components/Separator';
 import Karya from './karya/Karya';
-import Blog from './Blog';
+import Blog from './blog/Blog';
 import Kegiatan from './Kegiatan';
 import Agenda from './Agenda';
 import SEOComponent from '../../components/SEO';
