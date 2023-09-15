@@ -4,7 +4,7 @@ import Renderer from '../../components/Countdown';
 import SEOComponent from '../../components/SEO';
 import useSWR from 'swr';
 import Card from '../../components/agenda/Card';
-import { BASE_URL, fetcher } from '../../utils';
+import { BASE_URL, convertDate, fetcher } from '../../utils';
 
 const Agenda = () => {
 
@@ -30,15 +30,11 @@ const Agenda = () => {
 							{data?.data[0].title}
 						</p>
 						<p className='text-xs'>
-							Lorem ipsum dolor sit amet consectetur. A at libero
-							orci luctus sollicitudin posuere lectus libero
-							pellentesque. Tempus tellus urna mauris molestie
-							purus donec egestas. Morbi quisque magna lobortis
-							urna fringilla eget sed etiam.
+							{data?.data[0].description}
 						</p>
 						<p className='text-[13px]'>Kegiatan Dimulai dalam:</p>
 						<Countdown
-							date={'2024-02-01T01:02:03'}
+							date={convertDate(data?.data[0].time)}
 							renderer={Renderer}
 						/>
 					</div>
