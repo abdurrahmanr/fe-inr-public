@@ -8,7 +8,7 @@ import calendarIcon from '../../assets/icons/calendar.svg';
 import useSWR from 'swr';
 
 const Agenda = () => {
-	const { data } = useSWR(`${BASE_URL}/home/agenda`, fetcher);
+	const { data, isLoading } = useSWR(`${BASE_URL}/home/agenda`, fetcher);
 
 	return (
 		<div className='mx-5 h-fit bg-white sm:mx-10 xl:mx-[156px] 2xl:mx-[348px]'>
@@ -18,32 +18,34 @@ const Agenda = () => {
 						Agenda
 					</p>
 					<div className='mt-10 lg:mt-auto lg:my-auto flex justify-center'>
-						<div className='h-[409px] w-[338px] overflow-hidden rounded-[20px] bg-primary shadow-xl'>
-							<div className='h-[164px] w-full'>
-								<img
-									src={heroAgenda}
-									alt=''
-									className='h-full w-full object-cover'
-								/>
-							</div>
-							<div className='my-6 flex w-full flex-col gap-4 px-[42px]'>
-								<p className='text-xl font-semibold uppercase'>
-									{data?.data[0].title}
-								</p>
-								<p className='text-xs text-greyCol'>
-									{data?.data[0].description}
-								</p>
-								<div className='flex flex-col gap-6 text-center text-white'>
-									<p className='text-sm'>
-										Kegiatan Dimulai dalam:
-									</p>
-									<Countdown
-										date={data?.data[0].time}
-										renderer={Renderer}
+						{!isLoading && (
+							<div className='h-[409px] w-[338px] overflow-hidden rounded-[20px] bg-primary shadow-xl'>
+								<div className='h-[164px] w-full'>
+									<img
+										src={heroAgenda}
+										alt=''
+										className='h-full w-full object-cover'
 									/>
 								</div>
+								<div className='my-6 flex w-full flex-col gap-4 px-[42px]'>
+									<p className='text-xl font-semibold uppercase'>
+										{data?.data[0].title}
+									</p>
+									<p className='text-xs text-greyCol'>
+										{data?.data[0].description}
+									</p>
+									<div className='flex flex-col gap-6 text-center text-white'>
+										<p className='text-sm'>
+											Kegiatan Dimulai dalam:
+										</p>
+										<Countdown
+											date={data?.data[0].time}
+											renderer={Renderer}
+										/>
+									</div>
+								</div>
 							</div>
-						</div>
+						)}
 					</div>
 				</div>
 				<div className='col-span-full mt-10 flex flex-col items-center justify-center lg:col-span-6'>

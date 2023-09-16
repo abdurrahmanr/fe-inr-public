@@ -15,6 +15,7 @@ const angkatan = [
 	'angkatan 7',
 	'angkatan 8',
 	'angkatan 9',
+	'angkatan 10',
 ];
 
 const Anggota = () => {

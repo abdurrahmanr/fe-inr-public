@@ -10,7 +10,7 @@
 	margin: 0;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
 	@apply hidden;
 }
 

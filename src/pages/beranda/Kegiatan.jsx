@@ -15,7 +15,7 @@ const Kegiatan = () => {
 	const { data } = useSWR(`${BASE_URL}/home/gallery`, fetcher);
 
 	return (
-		<div className='h-fit text-center flex flex-col gap-3' >
+		<div className='h-fit text-center flex flex-col gap-3 overflow-hidden' >
 			<p className='text-greyCol/50 font-semibold text-[13px] leading-[19px]'>#INREADYWORKGROUP</p>
 			<p className='text-xl leading-6 font-bold text-yellowSecondary'>KEGIATAN INREADY WORKGROUP</p>
 			<div className="grid grid-cols-5 gap-3">

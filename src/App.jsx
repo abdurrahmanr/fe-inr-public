@@ -26,7 +26,6 @@ import NotFound from './pages/404';
 import BlogDetail from './pages/blog/BlogDetail';
 import ProfileLayout from './layouts/ProfileLayout';
 import KegiatanDetail from './pages/kegiatan/KegiatanDetail';
-import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -62,9 +61,7 @@ const router = createBrowserRouter(
 function App() {
 	return (
 		<>
-			<HelmetProvider>
-				<RouterProvider router={router} />
-			</HelmetProvider>
+			<RouterProvider router={router} />
 		</>
 	);
 }

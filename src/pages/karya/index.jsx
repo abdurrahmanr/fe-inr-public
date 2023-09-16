@@ -4,6 +4,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import SEOComponent from '../../components/SEO';
 import { boldNoRuin } from '../../utils';
 import ReactPaginate from 'react-paginate';
+import { ChevronDownIcon } from '@radix-ui/react-icons';
 // import { useState } from 'react'
 
 const jenisKarya = ['website', 'desain', 'mobile'];
@@ -27,10 +28,10 @@ const Karya = () => {
 					</p>
 				</div>
 				<div className='my-24 grid w-full grid-cols-1 gap-x-11 gap-y-28 md:grid-cols-2 lg:grid-cols-3'>
-					{[1, 2, 3].map((data) => (
+					{[1, 2, 3].map((data, index) => (
 						<div
 							className='relative flex justify-center'
-							key={data}
+							key={index}
 						>
 							<div className='h-full w-full overflow-hidden rounded-primary'>
 								<img
@@ -75,19 +76,20 @@ const Karya = () => {
 							))}
 						</Tabs.List>
 						<DropdownMenu.Root>
-							<DropdownMenu.Trigger asChild>
-								<button className='relative ml-auto mr-7 w-fit rounded-md bg-primary/20 px-5 py-3 text-xs leading-5 lg:mr-0'>
+							<DropdownMenu.Trigger className='group flex mr-0 ml-auto items-center bg-primary/20 rounded-md px-5 gap-1 py-2 text-greyCol font-medium'>
+								<button className='relative text-xs leading-5'>
 									Urutkan
 								</button>
+								<ChevronDownIcon className='transition-transform transform text-[#969696] group-data-[state=open]:-rotate-180' />
 							</DropdownMenu.Trigger>
-							<DropdownMenu.Content className='relative z-10 mt-4 flex animate-dropDownOut flex-col rounded-[7px] bg-white shadow outline outline-1 outline-[#D1D5DB] data-[state=open]:animate-dropDown'>
+							<DropdownMenu.Content className='relative z-10 mt-4 flex animate-dropDownOut flex-col rounded-[7px] bg-white shadow outline outline-1 outline-[#D1D5DB] data-[state=open]:animate-dropDown text-xs overflow-hidden'>
 								<DropdownMenu.Item
-									className={`px-6  py-4 capitalize hover:bg-primary hover:bg-opacity-20 hover:font-semibold ${boldNoRuin}`}
+									className={`px-6  py-4 capitalize hover:bg-primary hover:bg-opacity-20 hover:text-yellowSecondary hover:font-semibold ${boldNoRuin}`}
 								>
 									Periode
 								</DropdownMenu.Item>
 								<DropdownMenu.Item
-									className={`px-6  py-4 capitalize hover:bg-primary hover:bg-opacity-20 hover:font-semibold ${boldNoRuin}`}
+									className={`px-6  py-4 capitalize hover:bg-primary hover:bg-opacity-20 hover:text-yellowSecondary hover:font-semibold ${boldNoRuin}`}
 								>
 									Konsentrasi
 								</DropdownMenu.Item>

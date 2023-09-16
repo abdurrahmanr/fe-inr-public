@@ -19,3 +19,5 @@ export const convertDate = (date) => {
 		month: 'long',
 	});
 };
+
+// ${location.pathname.match('profile') ? 'font-semibold text-black' : 'text-greyCol'}

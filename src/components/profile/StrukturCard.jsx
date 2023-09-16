@@ -2,10 +2,11 @@ import pengurus from '../../assets/img/pengurus.png';
 import fbLogo from '../../assets/icons/fb.svg';
 import twitterLogo from '../../assets/icons/twitter.svg';
 import igLogo from '../../assets/icons/ig.svg';
+import { Link } from 'react-router-dom';
 
 const StrukturCard = () => {
 	return (
-		<div className='grid h-full w-full max-w-[243px] grid-cols-12 overflow-hidden rounded-primary border border-greyCol/20 '>
+		<div className='grid h-full w-full max-w-[243px] grid-cols-12 overflow-hidden rounded-primary border border-greyCol/20 flex-shrink-0'>
 			<div className='col-span-full flex h-[158px] w-full justify-center overflow-visible bg-primary'>
 				<img src={pengurus} alt='' className='h-full w-1/2 object-cover' />
 			</div>
@@ -21,13 +22,31 @@ const StrukturCard = () => {
 				</div>
 				<div className='mt-4 flex gap-1'>
 					<div className='flex items-center justify-center rounded-full bg-[#F2F4F7] px-[8px] py-[4px]'>
-						<img src={igLogo} alt='' />
+						<Link
+							to='https://www.instagram.com'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
+							<img src={igLogo} alt='' />
+						</Link>
 					</div>
 					<div className='flex items-center justify-center rounded-full bg-[#F2F4F7] px-[8px] py-[4px]'>
-						<img src={twitterLogo} alt='' />
+						<Link
+							to='https://www.twitter.com'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
+							<img src={twitterLogo} alt='' />
+						</Link>
 					</div>
 					<div className='flex items-center justify-center rounded-full bg-[#F2F4F7] p-[6px]'>
-						<img src={fbLogo} alt='' />
+						<Link
+							to='https://www.facebook.com'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
+							<img src={fbLogo} alt='' />
+						</Link>
 					</div>
 				</div>
 			</div>

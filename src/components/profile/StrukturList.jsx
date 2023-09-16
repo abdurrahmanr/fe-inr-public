@@ -25,15 +25,15 @@ const StrukturList = ({ title, datas, divisi }) => {
 					<p className='mb-8 text-sm text-yellowSecondary'>
 						Divisi yang dinaungi oleh Wakil 1 (Internal)
 					</p>
-					<div>
+					<div className='overflow-hidden'>
 						<p className='text-xs capitalize text-greyCol'>
 							Divisi Keorganisasian
 						</p>
-						<div className='grid w-full grid-flow-col grid-cols-12 py-10 lg:w-[calc(100%+500px)] 2xl:w-[calc(100%+700px)] '>
+						<div className='grid w-full grid-flow-row grid-cols-12 py-10 overflow-hidden'>
 							<div className='col-span-full lg:col-span-2'>
 								<StrukturCard />
 							</div>
-							<div className='col-span-full col-start-1 h-full w-full lg:col-start-5'>
+							<div className='col-span-full col-start-1 h-full w-full lg:col-start-5 overflow-hidden'>
 								<Swiper
 									spaceBetween={24}
 									slidesPerView={3.5}

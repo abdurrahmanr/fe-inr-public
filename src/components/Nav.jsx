@@ -8,8 +8,8 @@ import AccordionComponent from './Accordion';
 import { useState } from 'react';
 
 const Nav = () => {
-	const location = useLocation();
-
+	// const location = useLocation();
+	console.log('nav rendered');
 	const [show, setShow] = useState(false);
 	return (
 		<NavigationMenu.Root
@@ -44,7 +44,7 @@ const Nav = () => {
 								return (
 									<NavigationMenu.Item
 										key={link.url}
-										className='rounded bg-opacity-0 px-4 py-2 transition duration-200 ease-in-out hover:bg-primary hover:bg-opacity-20'
+										className='rounded bg-opacity-0 px-4 py-2 transition duration-500 ease-in-out hover:bg-primary/20'
 									>
 										<NavLink
 											to={
@@ -69,11 +69,7 @@ const Nav = () => {
 							return (
 								<NavigationMenu.Item key={link.url}>
 									<NavigationMenu.Trigger
-										className={`group flex items-center rounded px-4 py-2 capitalize data-[state=open]:bg-primary data-[state=open]:bg-opacity-20 data-[state=open]:font-semibold data-[state=open]:text-black  ${
-											location.pathname.match('profile')
-												? 'font-semibold text-black'
-												: 'text-greyCol'
-										}`}
+										className={`group flex items-center rounded px-4 py-2 capitalize data-[state=open]:bg-primary/20 data-[state=open]:font-semibold data-[state=open]:text-black`}
 										title={link.url}
 									>
 										<p
@@ -87,7 +83,7 @@ const Nav = () => {
 											aria-hidden
 										/>
 									</NavigationMenu.Trigger>
-									<NavigationMenu.Content className='absolute -ms-[50px] mt-4 flex animate-dropDownOut flex-col rounded-[7px] bg-white shadow outline outline-1 outline-[#D1D5DB] data-[state=open]:animate-dropDown'>
+									<NavigationMenu.Content className='absolute -ms-[50px] mt-4 flex animate-dropDownOut flex-col rounded-[7px] bg-white shadow outline outline-1 outline-[#D1D5DB] data-[state=open]:animate-dropDown overflow-hidden'>
 										{link.options.map((option) => (
 											<NavLink
 												key={option}

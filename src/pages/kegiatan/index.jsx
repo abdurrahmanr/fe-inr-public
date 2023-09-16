@@ -47,7 +47,7 @@ const Kegiatan = () => {
 						/>
 					</div>
 					<div>
-						<p className=''>Semua tag</p>
+						<p className=' mt-16'>Semua tag</p>
 						<div className='mt-8 flex flex-wrap gap-2'>
 							{categories.map((category) => (
 								<button
@@ -65,7 +65,6 @@ const Kegiatan = () => {
 					<p className='text-2xl font-medium'>
 						Kegiatan Inready Workgroup
 					</p>
-					<button>asdasd</button>
 					<div className='mt-16 grid grid-flow-row grid-cols-1 justify-items-center gap-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
 						{[1, 2, 3, 4].map((data) => (
 							<Fragment key={data}>
