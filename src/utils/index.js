@@ -10,7 +10,7 @@ export const underlineTitle =
 
 export const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-export const BASE_URL = 'https://inr.hmjti-uinam.com/api';
+export const BASE_URL = 'https://inr.hmjti-uinam.com/api/public';
 
 export const convertDate = (date) => {
 	return new Date(date).toLocaleDateString('id-ID', {

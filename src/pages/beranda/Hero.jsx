@@ -14,7 +14,7 @@ import { BASE_URL, fetcher } from '../../utils';
 
 const Hero = () => {
 
-	const { data, isLoading } = useSWR(`${BASE_URL}/home/slider`, fetcher);
+	const { data: slider, isLoading } = useSWR(`${BASE_URL}/home/slider`, fetcher);
 
 	return (
 		<div className='relative h-[calc(100vh_-_80px)] bg-primary'>
@@ -42,7 +42,7 @@ const Hero = () => {
 					slidesPerView={1}
 					className='mySwipe h-full'
 				>
-					{data.data.map((slide) => (
+					{slider.data.map((slide) => (
 						<SwiperSlide
 							key={slide.id}
 							className='grid grid-cols-2 items-center'

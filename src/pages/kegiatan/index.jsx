@@ -5,6 +5,9 @@ import Dropdown from '../../components/Dropdown';
 import SEOComponent from '../../components/SEO';
 import KegiatanCard from '../../components/kegiatan/Card';
 import { Fragment } from 'react';
+import swr from 'swr';
+import { BASE_URL, fetcher } from '../../utils';
+import useSWR from 'swr';
 
 const categories = ['outdoor', 'perekrutan', 'pembelajaran'];
 
@@ -15,6 +18,7 @@ const Kegiatan = () => {
 	// const [filterData, setFilterData] = useState();
 	// const [selected, setSelected] = useState('event');
 	const [filter, setFilter] = useState(filters[0]);
+	const { data, isLoading } = useSWR(`${BASE_URL}/activity`, fetcher);
 	// const n = 4
 	// const [data, setData] = useState([])
 
@@ -66,9 +70,9 @@ const Kegiatan = () => {
 						Kegiatan Inready Workgroup
 					</p>
 					<div className='mt-16 grid grid-flow-row grid-cols-1 justify-items-center gap-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
-						{[1, 2, 3, 4].map((data) => (
-							<Fragment key={data}>
-								<KegiatanCard />
+						{data?.data.map((data) => (
+							<Fragment key={data.id}>
+								<KegiatanCard data={data} />
 							</Fragment>
 						))}
 					</div>
@@ -79,7 +83,7 @@ const Kegiatan = () => {
 				pageClassName={'page-item'}
 				activeClassName={'active'}
 				// onPageChange={(event) => setPage(event.selected)}
-				pageCount={Math.ceil(6)}
+				pageCount={data?.meta.total_page}
 				breakLabel='...'
 				previousLabel='<'
 				nextLabel='>'
