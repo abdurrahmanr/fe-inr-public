@@ -16,7 +16,7 @@ const Beranda = () => {
 		<>
 			<SEOComponent title='Inready Workgroup' />
 			<div className='h-fit'>
-				<Hero />
+				{/* <Hero /> */}
 				<div className='flex flex-col items-center justify-center gap-[76px] py-[74px] lg:flex-row'>
 					<Konsentrasi
 						svg={webIcon}
@@ -35,10 +35,10 @@ const Beranda = () => {
 					/>
 				</div>
 				<SeparatorComponent />
-				<Tentang />
-				<Karya />
-				<Blog />
-				<Kegiatan />
+				{/* <Tentang /> */}
+				{/* <Karya /> */}
+				{/* <Blog /> */}
+				{/* <Kegiatan /> */}
 				<Agenda />
 			</div>
 		</>

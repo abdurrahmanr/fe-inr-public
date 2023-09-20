@@ -11,8 +11,6 @@ const KegiatanDetail = () => {
 
 	const { data, isLoading } = useSWR(`${BASE_URL}/activity/show/${id}`, fetcher);
 
-	console.log(data)
-
 	return (
 		<>
 			<SEOComponent title={`${'Sosialisasi'} | Inready Workgroup`} />
