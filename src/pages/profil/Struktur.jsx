@@ -1,8 +1,12 @@
 import SEOComponent from '../../components/SEO';
 import StrukturList from '../../components/profile/StrukturList';
 import { pengurus } from '../../constants';
+import useSWR from 'swr';
+import { BASE_URL, fetcher } from '../../utils';
 
 const Struktur = () => {
+	const { data: struktur, error } = useSWR(`${BASE_URL}/bpo`, fetcher);
+
 	return (
 		<>
 			<SEOComponent title={'Struktur Organisasi | Inready Workgroup'} />
@@ -15,14 +19,16 @@ const Struktur = () => {
 				</div>
 				<StrukturList
 					title={'Pembina Inready Workgroup'}
-					datas={pengurus}
+					data={pengurus}
 				/>
 				<StrukturList
 					title={'BPO Inready Workgroup'}
-					datas={pengurus}
+					data={struktur?.presidium}
 				/>
-				<StrukturList title={'Divisi'} datas={pengurus} divisi={true} />
-				<StrukturList title={'Divisi'} datas={pengurus} divisi={true} />
+				{struktur?.bpo.map((bpo, index) => (
+					// <StrukturList title={'Divisi'} data={pengurus} divisi={true} />
+					<StrukturList title={bpo.name} data={bpo.division} divisi={true} />
+				))}
 			</div>
 		</>
 	);

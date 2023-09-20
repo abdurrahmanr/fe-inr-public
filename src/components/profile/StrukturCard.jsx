@@ -4,7 +4,7 @@ import twitterLogo from '../../assets/icons/twitter.svg';
 import igLogo from '../../assets/icons/ig.svg';
 import { Link } from 'react-router-dom';
 
-const StrukturCard = () => {
+const StrukturCard = ({ name, position = 'anggota' }) => {
 	return (
 		<div className='grid h-full w-full max-w-[243px] grid-cols-12 overflow-hidden rounded-primary border border-greyCol/20 flex-shrink-0'>
 			<div className='col-span-full flex h-[158px] w-full justify-center overflow-visible bg-primary'>
@@ -12,9 +12,9 @@ const StrukturCard = () => {
 			</div>
 			<div className='col-span-full h-full overflow-hidden bg-white px-5 py-3 text-xs capitalize'>
 				<div className='flex flex-col gap-[6px] text-left'>
-					<p className='text-right text-[10px]'>Pembina</p>
-					<p className='font-semibold'>Nama</p>
-					<p className=''>Profesi</p>
+					<p className='text-right text-[10px]'>{position}</p>
+					<p className='font-semibold'>{name}</p>
+					<p className=''>Mahasiswa</p>
 					<p className='text-justify text-[10px] leading-3 tracking-tighter text-greyCol/50'>
 						There are many variations of passages of Lorem Ipsum
 						available
