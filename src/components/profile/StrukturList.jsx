@@ -5,18 +5,17 @@ import { Navigation } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { useState } from 'react';
 
-const StrukturList = ({ title, data, divisi, division }) => {
+const StrukturList = ({ title, data, divisi }) => {
 	return (
 		<div className='mt-10 h-full w-full'>
 			{!divisi ? (
 				<>
 					<p className='capitalize text-secondary w-full'>{title}</p>
 					<div className='w-full overflow-x-scroll'>
-						<div className='mt-10 grid lg:grid-cols-12 gap-x-12 gap-y-6 px-10 lg:px-0 w-fit lg:grid-flow-row grid-flow-col overflow-x-scroll auto-cols-max'>
+						<div className='mt-10 grid lg:grid-cols-12 gap-x-12 gap-y-6 lg:px-0 w-fit lg:grid-flow-row grid-flow-col overflow-x-scroll auto-cols-max'>
 							{data?.map((profile, index) => (
-								<div key={index} className='col-span-4'>
+								<div key={index} className='col-span-4 first:ms-5'>
 									<StrukturCard {...profile} />
 								</div>
 							))}
@@ -30,27 +29,36 @@ const StrukturList = ({ title, data, divisi, division }) => {
 					</p>
 					{data?.map((division, index) => {
 						return (
-							<div className='' key={index}>
+							<div className='overflow-visible relative' key={index}>
 								<p className='text-xs capitalize text-greyCol'>
 									Divisi {division.name === 'Biarawati' ? 'Keajian' : division.name}
 								</p>
-								<div className='grid -ml-[5vw] lg:ml-0 grid-flow-row grid-cols-12 py-10 overflow-hidden lg:w-[calc(100%+40vw)] xl:w-[calc(100%+50vw]'>
-									<div className='col-span-full lg:col-span-2'>
+								<div className='grid -ml-[5vw] lg:ml-0 grid-flow-row grid-cols-12 py-10 overflow-hidden lg:w-[calc(100%+25.95vw)] gap-y-10 lg:gap-y-0 -mx-5'>
+									<div className='col-span-full lg:col-span-2 mx-auto lg:mx-0'>
 										<StrukturCard position='ketua divisi' name={division.members[0]?.name} concentration={division.members[0]?.concentration} />
 									</div>
 									<div className='col-span-full col-start-1 h-full w-full lg:col-start-5 !overflow-hidden'>
 										<Swiper
 											spaceBetween={24}
-											slidesPerView={3.5}
+											slidesPerView={'auto'}
 											navigation
 											className='test h-full w-full select-none'
 											modules={[Navigation]}
-											slidesOffsetAfter={125}
+											// slidesOffsetAfter={750}
+											centeredSlides={true}
 											grabCursor
+											breakpoints={
+												{
+													1024: {
+														centeredSlides: false,
+														slidesOffsetAfter: 250
+													}
+												}
+											}
 										>
 											{division?.members?.map((member, index) => {
 												if (member.is_division_head === '1') {
-													return 0;
+													return;
 												}
 
 												return (

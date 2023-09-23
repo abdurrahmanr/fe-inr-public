@@ -9,7 +9,7 @@ const VisiMisi = () => {
 					<p className='text-left text-2xl font-medium text-secondary'>
 						Visi Inready Workgroup
 					</p>
-					<p className='mt-9 text-xs text-greyCol'>
+					<p className='mt-9 text-xs text-greyCol indent-[35px]'>
 						Lorem ipsum dolor sit amet consectetur. A at libero orci
 						luctus sollicitudin posuere lectus libero pellentesque.
 						Tempus tellus urna mauris molestie purus donec egestas.
@@ -27,7 +27,7 @@ const VisiMisi = () => {
 					<p className='text-left text-2xl font-medium text-secondary'>
 						Misi Inready Workgroup
 					</p>
-					<p className='mt-9 text-xs text-greyCol'>
+					<p className='mt-9 text-xs text-greyCol indent-[35px]'>
 						Lorem ipsum dolor sit amet consectetur. A at libero orci
 						luctus sollicitudin posuere lectus libero pellentesque.
 						Tempus tellus urna mauris molestie purus donec egestas.

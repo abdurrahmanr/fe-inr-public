@@ -6,7 +6,7 @@ import { BASE_URL } from '../../utils';
 import { fetcher } from '../../utils/fetcher';
 
 const Struktur = () => {
-	const { data: struktur, error } = useSWR(`${BASE_URL}/bpo`, fetcher);
+	const { data: struktur } = useSWR(`${BASE_URL}/bpo`, fetcher);
 
 	return (
 		<>
@@ -18,6 +18,7 @@ const Struktur = () => {
 				<div className='mt-9 flex flex-col gap-9 text-xs text-greyCol'>
 					<p>Periode 2022-2023</p>
 				</div>
+
 				<StrukturList
 					title={'Pembina Inready Workgroup'}
 					data={pengurus}
@@ -27,10 +28,9 @@ const Struktur = () => {
 					data={struktur?.presidium}
 				/>
 				{struktur?.bpo.map((bpo, index) => (
-					// <StrukturList title={'Divisi'} data={pengurus} divisi={true} />
-					<StrukturList title={bpo.name} data={bpo.division} divisi={true} />
+					<StrukturList key={index} title={bpo.name} data={bpo.division} divisi={true} />
 				))}
-			</div>
+			</div >
 		</>
 	);
 };

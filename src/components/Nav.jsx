@@ -1,5 +1,5 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import { TriangleDownIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { TriangleDownIcon } from '@radix-ui/react-icons';
 import { NavLink, useLocation } from 'react-router-dom';
 import { links } from '../constants';
 import logo from '../assets/inr.png';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { Twirl as Hamburger } from 'hamburger-react'
 
 const DesktopNav = () => {
-	// const location = useLocation();
+	const location = useLocation();
 	return (
 		<NavigationMenu.Root
 			className='fixed z-20 hidden lg:flex h-[80px] w-full items-center justify-between bg-white px-5 shadow sm:px-10 xl:px-[156px] 2xl:px-[348px]'
@@ -68,7 +68,11 @@ const DesktopNav = () => {
 							return (
 								<NavigationMenu.Item key={link.url}>
 									<NavigationMenu.Trigger
-										className={`group flex items-center rounded px-4 py-2 capitalize data-[state=open]:bg-primary/20 data-[state=open]:font-semibold data-[state=open]:text-black`}
+										className={`group flex items-center rounded px-4 py-2 capitalize data-[state=open]:bg-primary/20 data-[state=open]:font-semibold data-[state=open]:text-black
+										${location.pathname.match('profile')
+												? 'font-semibold text-black'
+												: 'text-greyCol'
+											}`}
 										title={link.url}
 									>
 										<p
@@ -108,17 +112,19 @@ const MobileNav = () => {
 	const [show, setShow] = useState(false);
 
 	return (
-		<nav className='h-[80px] fixed bg-white w-full z-50 lg:hidden flex items-center justify-between px-5 sm:px-10'>
-			<NavLink to='/'>
-				<img
-					src={logo}
-					alt='Logo Inready Workgroup'
-					className='h-[80px] hover:text-black'
-				/>
-			</NavLink>
-			<Hamburger toggled={show} toggle={setShow} size={28} color='#FFC400' />
+		<nav className='h-[80px] fixed bg-white w-full z-50 lg:hidden flex'>
+			<div className='flex justify-between px-5 sm:px-10 h-full z-50 relative w-full items-center'>
+				<NavLink to='/'>
+					<img
+						src={logo}
+						alt='Logo Inready Workgroup'
+						className='h-[80px] hover:text-black'
+					/>
+				</NavLink>
+				<Hamburger toggled={show} toggle={setShow} size={28} color='#FFC400' rounded />
+			</div>
 			<div
-				className={`absolute left-0 w-full flex-col gap-4 bg-white text-center shadow transition-all duration-500 lg:hidden ${show ? `opacity-100 top-[75px]` : `opacity-0 -top-[1000px]`}`}
+				className={`z-0 absolute left-0 flex w-full flex-col gap-4 bg-white text-center shadow transition-all duration-500 lg:hidden ${show ? `opacity-100 top-[75px]` : `opacity-0 -top-[1000px]`}`}
 			>
 				{links.map((link) => {
 					if (link.type === 'link') {
@@ -153,6 +159,12 @@ const MobileNav = () => {
 						<AccordionComponent
 							key={link.url}
 							title={link.url}
+							className={
+								`${location.pathname.match('profile')
+									? 'font-semibold text-black'
+									: 'text-greyCol'
+								}`
+							}
 						>
 							{link.options.map((option) => (
 								<NavLink

@@ -4,8 +4,9 @@ import Button from '../../../components/Button';
 import { BASE_URL, underlineTitle } from '../../../utils/index';
 import { Link } from 'react-router-dom';
 import useSWR from 'swr';
-import BlogSkeleton from './BlogSkeleton';
+// import BlogSkeleton from './BlogSkeleton';
 import { fetcher } from '../../../utils/fetcher';
+import { ImageIcon } from '@radix-ui/react-icons';
 
 
 const Blog = () => {
@@ -67,12 +68,18 @@ const Blog = () => {
 								{
 									!isLoading && data.data.map((data) => (
 										<Tabs.Content key={data.title} value={data.title}>
-											<div className='w-full rounded-[10px] overflow-hidden'>
-												<img
-													src={data.image}
-													alt=''
-													className='w-full'
-												/>
+											<div className='w-full rounded-[10px] overflow-hidden flex justify-center bg-[#f4f5f6]'>
+												{
+													data?.image === null
+														?
+														<img
+															src={data.image}
+															alt=''
+															className='h-full w-full object-cover'
+														/>
+														:
+														<ImageIcon className='w-1/4 py-10 h-1/3 text-gray-400' />
+												}
 											</div>
 											<div className='mt-7 flex items-center gap-1 text-[10px] font-medium capitalize leading-5 text-greyCol'>
 												<p>By</p>

@@ -39,7 +39,7 @@
 
 .test .swiper-button-prev,
 .test .swiper-button-next {
-	@apply w-0 lg:!w-[25%];
+	@apply w-10 lg:!w-[25%];
 }
 
 .swiper-button-prev:after,
@@ -49,7 +49,7 @@
 
 .test .swiper-button-prev,
 .test .swiper-button-next {
-	@apply mr-28;
+	@apply lg:mr-28;
 }
 
 .test .swiper-button-prev:after {
@@ -64,4 +64,8 @@
 
 .test .swiper-button-disabled {
 	@apply hidden;
+}
+
+.hamburger-react > div > div {
+	@apply !h-[3px];
 }

@@ -7,7 +7,7 @@ import { } from '../../constants';
 import heroBlog from '../../assets/heroBlog.png';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SEOComponent from '../../components/SEO';
 import { BASE_URL, boldNoRuin } from '../../utils';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
@@ -39,7 +39,6 @@ const categories = [
 
 const Blog = () => {
 	const [selected, setSelected] = useState('event');
-	const [data, setData] = useState([]);
 	const [queryParams, setQueryParams] = useState('')
 	const { data: dataBlog, isLoading } = useSWR({ url: `${BASE_URL}/blog`, params: queryParams }, fetchWithParams);
 
