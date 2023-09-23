@@ -5,7 +5,6 @@ import Dropdown from '../../components/Dropdown';
 import SEOComponent from '../../components/SEO';
 import KegiatanCard from '../../components/kegiatan/Card';
 import { Fragment } from 'react';
-import swr from 'swr';
 import { BASE_URL } from '../../utils';
 import useSWR from 'swr';
 import { fetcher } from '../../utils/fetcher';

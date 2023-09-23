@@ -7,7 +7,7 @@ const Tentang = () => {
 		<div className='my-36 flex w-full flex-col items-center justify-center'>
 			<div className='w-3/4 lg:w-1/2'>
 				<div className=' w-full overflow-hidden rounded-[20px] shadow-xl lg:w-full'>
-					<img src={heroAbout} alt='' className='h-full w-full' />
+					<img src={heroAbout} alt='' loading='lazy' className='h-full w-full' />
 				</div>
 
 				<div className='mt-[91px] flex w-full flex-col items-center gap-[60px] lg:flex-row'>

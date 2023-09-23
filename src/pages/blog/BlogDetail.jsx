@@ -33,7 +33,7 @@ const BlogDetail = () => {
 						<p className='capitalize'>{!isLoading && dataBlogDetail?.data.category}</p>
 					</div>
 				</div>
-				<div className='mt-14 aspect-video h-72 w-11/12 lg:w-4/5 flex items-center justify-center bg-[#f4f5f6]'>
+				<div className='mt-14 aspect-video h-72 w-11/12 lg:w-4/5 flex items-center justify-center bg-[#f4f5f6] animate-pulse'>
 					{/* {dataBlogDetail?.data.image !== null
 						?
 						<img

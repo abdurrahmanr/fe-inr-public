@@ -25,8 +25,6 @@ const Anggota = () => {
 	const [queryParams, setQueryParams] = useState('')
 	const { data: members } = useSWR({ url: `${BASE_URL}/member`, params: queryParams }, fetchWithParams);
 
-	console.log(members)
-
 	return (
 		<>
 			<SEOComponent title='Anggota | Inready Workgroup' />

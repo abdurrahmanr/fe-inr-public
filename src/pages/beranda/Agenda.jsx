@@ -25,6 +25,7 @@ const Agenda = () => {
 									<img
 										src={heroAgenda}
 										alt=''
+										loading='lazy'
 										className='h-full w-full object-cover'
 									/>
 								</div>

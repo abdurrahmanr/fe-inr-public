@@ -17,8 +17,6 @@ const Hero = () => {
 
 	const { data: slider, isLoading } = useSWR(`${BASE_URL}/home/slider`, fetcher);
 
-	console.log(slider)
-
 	return (
 		<div className='relative h-[calc(100vh_-_80px)] bg-primary'>
 			{!isLoading && (
@@ -57,6 +55,7 @@ const Hero = () => {
 											<img
 												src={slide.image}
 												alt=''
+												loading='lazy'
 												className={`${isActive
 													? 'scale-125'
 													: 'scale-100'

@@ -122,6 +122,7 @@ const Blog = () => {
 											<img
 												src={heroBlog}
 												alt=''
+												loading='lazy'
 												className='h-full w-full object-cover transition-all duration-1000 group-hover:scale-105'
 											/>
 										</div>

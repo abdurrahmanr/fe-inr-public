@@ -1,10 +1,8 @@
 import karyaImg from '../../assets/img/karya.jpeg';
 import * as Tabs from '@radix-ui/react-tabs';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import SEOComponent from '../../components/SEO';
 import { BASE_URL, boldNoRuin } from '../../utils';
 import ReactPaginate from 'react-paginate';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { useState } from 'react'
 import useSWR from 'swr';
 import { fetcher } from '../../utils/fetcher';
@@ -14,7 +12,7 @@ const jenisKarya = ['website', 'desain', 'mobile'];
 const Karya = () => {
 	// const [page, setPage] = useState(0);
 	const [selectedWork, setSelectedWork] = useState(1); // ['website', 'desain', 'mobile'
-	const { data: karya, error } = useSWR(`${BASE_URL}/works?concentration=${selectedWork}`, fetcher);
+	const { data: karya } = useSWR(`${BASE_URL}/works?concentration=${selectedWork}`, fetcher);
 	// console.log(karya)
 
 	return (
@@ -42,6 +40,7 @@ const Karya = () => {
 								<img
 									src={karyaImg}
 									alt=''
+									loading='lazy'
 									className='h-full w-full object-cover '
 								/>
 							</div>
@@ -113,6 +112,7 @@ const Karya = () => {
 									<img
 										src={karyaImg}
 										alt=''
+										loading='lazy'
 										className='h-full w-full object-cover '
 									/>
 								</div>

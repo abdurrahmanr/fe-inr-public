@@ -10,6 +10,7 @@ const Card = ({ data }) => {
                 <img
                     src={kegiatanImg}
                     alt=''
+                    loading='lazy'
                     className='h-full w-full object-cover transition-all duration-1000 group-hover:scale-125'
                 />
             </div>

@@ -8,7 +8,7 @@ const StrukturCard = (props) => {
 	return (
 		<div className='grid h-full w-[250px] flex-grow-0 lg:w-[225px] grid-cols-12 overflow-hidden rounded-primary border border-greyCol/20'>
 			<div className='col-span-full flex h-[158px] w-full justify-center overflow-visible bg-primary'>
-				<img src={pengurus} alt='' className='h-full w-1/2 object-cover' />
+				<img src={pengurus} alt='' loading='lazy' className='h-full w-1/2 object-cover' />
 			</div>
 			<div className='col-span-full h-full overflow-hidden bg-white px-5 py-3 text-xs capitalize'>
 				<div className='flex flex-col gap-[6px] text-left'>
