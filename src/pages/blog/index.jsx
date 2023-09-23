@@ -3,14 +3,16 @@ import eventIcon from '../../assets/icons/event.svg';
 import webIcon from '../../assets/icons/web.svg';
 import mobileIcon from '../../assets/icons/mobile.svg';
 import designIcon from '../../assets/icons/design.svg';
-import { dataBlog } from '../../constants';
+import { } from '../../constants';
 import heroBlog from '../../assets/heroBlog.png';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
 import SEOComponent from '../../components/SEO';
-import { boldNoRuin } from '../../utils';
+import { BASE_URL, boldNoRuin } from '../../utils';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import useSWR from 'swr';
+import { fetchWithParams } from '../../utils/fetcher';
 
 const categories = [
 	{
@@ -36,23 +38,10 @@ const categories = [
 ];
 
 const Blog = () => {
-	const [page, setPage] = useState(0);
-	const [filterData, setFilterData] = useState();
 	const [selected, setSelected] = useState('event');
-	const n = 4;
 	const [data, setData] = useState([]);
-
-	useEffect(() => {
-		setFilterData(
-			data.filter((item, index) => {
-				return (index >= page * n) & (index < (page + 1) * n);
-			})
-		);
-	}, [page, data]);
-
-	useEffect(() => {
-		setData(dataBlog.filter((data) => data.category == selected));
-	}, [selected]);
+	const [queryParams, setQueryParams] = useState('')
+	const { data: dataBlog, isLoading } = useSWR({ url: `${BASE_URL}/blog`, params: queryParams }, fetchWithParams);
 
 	return (
 		<>
@@ -75,7 +64,6 @@ const Blog = () => {
 							className='group hidden rounded-[10px] border-[0.5px] border-greyCol/50 px-3 py-3 text-left transition-all duration-500 hover:bg-primary/30 data-[state=active]:border-primary/30 data-[state=active]:bg-primary/30 lg:block'
 							onClick={() => {
 								setSelected(category.title);
-								setPage(0);
 							}}
 						>
 							<div className='flex items-center gap-2 font-medium capitalize'>
@@ -116,40 +104,42 @@ const Blog = () => {
 					<p className='text-2xl font-medium'>
 						Blog Inready Workgroup
 					</p>
-					<div className='mt-16 grid auto-rows-[100px] grid-cols-12 grid-rows-4 gap-y-5 lg:gap-12'>
+					<div className={`mt-16 grid grid-cols-12 grid-rows-${dataBlog?.data.length} gap-y-5 lg:gap-12`}>
 						{/* tab selected content */}
-						{filterData?.map((data) => (
-							<Tabs.Content
-								key={data.title}
-								className='group relative z-0 col-span-full rounded-small transition-all duration-500 hover:bg-greyCol/10 data-[state=inactive]:hidden'
-								value={data.category}
-								asChild
-							>
-								<Link
-									to={`${data.id}`}
-									className='flex h-full w-full flex-col items-center gap-x-0 lg:flex-row lg:gap-x-10'
+						{
+							!isLoading &&
+							dataBlog?.data.map((data) => (
+								<Tabs.Content
+									key={data.title}
+									className='group row-span-1 relative z-0 col-span-full rounded-small transition-all duration-500 hover:bg-greyCol/10 data-[state=inactive]:hidden'
+									value={'event'}
+									asChild
 								>
-									<div className='h-[274px] w-3/4 overflow-hidden rounded-small lg:w-[234px]'>
-										<img
-											src={heroBlog}
-											alt=''
-											className='h-full w-full object-cover transition-all duration-1000 group-hover:scale-105'
-										/>
-									</div>
-									<div className='mt-10 flex h-1/2 w-3/4 flex-col gap-1 lg:mt-0'>
-										<p className='text-xs font-semibold capitalize tracking-[3px] text-yellowSecondary'>
-											{data.category}
-										</p>
-										<p className='mt-1 text-xs font-bold leading-7 text-secondary'>
-											{data.title}
-										</p>
-										<p className='text-[10px] text-greyCol'>
-											{data.description}
-										</p>
-									</div>
-								</Link>
-							</Tabs.Content>
-						))}
+									<Link
+										to={`${data.slug}`}
+										className='flex h-full w-full flex-col items-center gap-x-0 lg:flex-row lg:gap-x-10'
+									>
+										<div className='h-[274px] w-3/4 overflow-hidden rounded-small lg:w-[234px]'>
+											<img
+												src={heroBlog}
+												alt=''
+												className='h-full w-full object-cover transition-all duration-1000 group-hover:scale-105'
+											/>
+										</div>
+										<div className='mt-10 flex h-1/2 w-3/4 flex-col gap-1 lg:mt-0'>
+											<p className='text-xs font-semibold capitalize tracking-[3px] text-yellowSecondary'>
+												{data.category}
+											</p>
+											<p className='mt-1 text-xs font-bold leading-7 text-secondary'>
+												{data.title}
+											</p>
+											<p className='text-[10px] text-greyCol'>
+												{data.content}
+											</p>
+										</div>
+									</Link>
+								</Tabs.Content>
+							))}
 					</div>
 				</div>
 			</Tabs.Root>
@@ -159,10 +149,13 @@ const Blog = () => {
 				pageClassName={'page-item'}
 				activeClassName={'active'}
 				// onPageChange={(event) => setPage(event.selected)}
-				pageCount={Math.ceil(6)}
+				pageCount={dataBlog?.meta.total_page}
 				breakLabel='...'
 				previousLabel='<'
 				nextLabel='>'
+				onPageChange={(e) => setQueryParams(`?page=${e.selected + 1}`)}
+				// onPageActive={(event) => console.log(event)}
+				// onClick={(event) => { console.log(event) }}
 				className='mx-auto mb-24 mt-12 flex w-fit items-center gap-5'
 			/>
 		</>

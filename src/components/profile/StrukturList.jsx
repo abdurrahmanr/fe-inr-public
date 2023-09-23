@@ -12,13 +12,15 @@ const StrukturList = ({ title, data, divisi, division }) => {
 		<div className='mt-10 h-full w-full'>
 			{!divisi ? (
 				<>
-					<p className='capitalize text-secondary'>{title}</p>
-					<div className='mt-10 grid grid-cols-12 gap-x-12 gap-y-6 px-10 lg:px-0'>
-						{data?.map((profile, index) => (
-							<div key={index} className='col-span-4'>
-								<StrukturCard name={profile.name} position={profile.position} />
-							</div>
-						))}
+					<p className='capitalize text-secondary w-full'>{title}</p>
+					<div className='w-full overflow-x-scroll'>
+						<div className='mt-10 grid lg:grid-cols-12 gap-x-12 gap-y-6 px-10 lg:px-0 w-fit lg:grid-flow-row grid-flow-col overflow-x-scroll auto-cols-max'>
+							{data?.map((profile, index) => (
+								<div key={index} className='col-span-4'>
+									<StrukturCard {...profile} />
+								</div>
+							))}
+						</div>
 					</div>
 				</>
 			) : (
@@ -32,11 +34,11 @@ const StrukturList = ({ title, data, divisi, division }) => {
 								<p className='text-xs capitalize text-greyCol'>
 									Divisi {division.name === 'Biarawati' ? 'Keajian' : division.name}
 								</p>
-								<div className='grid w-full grid-flow-row grid-cols-12 py-10 overflow-hidden lg:w-[calc(100%+500px)] 2xl:w-[calc(100%+700px)]'>
+								<div className='grid -ml-[5vw] lg:ml-0 grid-flow-row grid-cols-12 py-10 overflow-hidden lg:w-[calc(100%+40vw)] xl:w-[calc(100%+50vw]'>
 									<div className='col-span-full lg:col-span-2'>
-										<StrukturCard position='ketua divisi' name={division.members[0]?.name} />
+										<StrukturCard position='ketua divisi' name={division.members[0]?.name} concentration={division.members[0]?.concentration} />
 									</div>
-									<div className='col-span-full col-start-1 h-full w-full lg:col-start-5 overflow-hidden'>
+									<div className='col-span-full col-start-1 h-full w-full lg:col-start-5 !overflow-hidden'>
 										<Swiper
 											spaceBetween={24}
 											slidesPerView={3.5}
@@ -52,8 +54,8 @@ const StrukturList = ({ title, data, divisi, division }) => {
 												}
 
 												return (
-													<SwiperSlide key={index} className='h-full w-full'>
-														<StrukturCard name={member.name} />
+													<SwiperSlide key={index} className='h-full !w-fit'>
+														<StrukturCard {...member} />
 													</SwiperSlide>
 												);
 											})}

@@ -1,9 +1,10 @@
 import imagePlaceholder from '../../assets/icons/imagePlaceholder.svg';
 import SEOComponent from '../../components/SEO';
 import useSWR from 'swr';
-import { BASE_URL, fetcher } from '../../utils';
+import { BASE_URL } from '../../utils';
 import { useParams } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
+import { fetcher } from '../../utils/fetcher';
 
 const KegiatanDetail = () => {
 

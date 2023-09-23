@@ -4,7 +4,8 @@ import Renderer from '../../components/Countdown';
 import SEOComponent from '../../components/SEO';
 import useSWR from 'swr';
 import Card from '../../components/agenda/Card';
-import { BASE_URL, convertDate, fetcher } from '../../utils';
+import { BASE_URL, convertDate } from '../../utils';
+import { fetcher } from '../../utils/fetcher';
 
 const Agenda = () => {
 

@@ -14,8 +14,10 @@ import {
 } from 'swiper/modules';
 import arrowRight from '../../../assets/icons/arrow-right.svg';
 import { Link } from 'react-router-dom';
-import { BASE_URL, fetcher } from '../../../utils';
+import { BASE_URL } from '../../../utils';
 import useSWR from 'swr';
+import { ImageIcon } from '@radix-ui/react-icons';
+import { fetcher } from '../../../utils/fetcher';
 
 const Karya = () => {
 	const { data } = useSWR(`${BASE_URL}/home/work`, fetcher);
@@ -85,12 +87,18 @@ const Karya = () => {
 						>
 							{({ isActive }) => (
 								<div className='relative h-full w-2/3 lg:w-full'>
-									<div className='flex h-full w-full overflow-hidden rounded-[20px]'>
-										<img
-											src={data.image}
-											alt=''
-											className='h-full w-full object-cover'
-										/>
+									<div className='flex h-full w-full overflow-hidden justify-center items-center rounded-[20px] bg-[#f4f5f6]'>
+										{
+											data?.image === null
+												?
+												<img
+													src={data.image}
+													alt=''
+													className='h-full w-full object-cover'
+												/>
+												:
+												<ImageIcon className='w-1/3 h-1/3 text-gray-400' />
+										}
 									</div>
 									<div
 										className={`${isActive

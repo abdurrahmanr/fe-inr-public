@@ -2,11 +2,12 @@ import karyaImg from '../../assets/img/karya.jpeg';
 import * as Tabs from '@radix-ui/react-tabs';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import SEOComponent from '../../components/SEO';
-import { BASE_URL, boldNoRuin, fetcher } from '../../utils';
+import { BASE_URL, boldNoRuin } from '../../utils';
 import ReactPaginate from 'react-paginate';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { useState } from 'react'
 import useSWR from 'swr';
+import { fetcher } from '../../utils/fetcher';
 
 const jenisKarya = ['website', 'desain', 'mobile'];
 

@@ -1,10 +1,11 @@
 import { Separator } from '@radix-ui/react-separator';
 import * as Tabs from '@radix-ui/react-tabs';
 import Button from '../../../components/Button';
-import { BASE_URL, fetcher, underlineTitle } from '../../../utils/index';
+import { BASE_URL, underlineTitle } from '../../../utils/index';
 import { Link } from 'react-router-dom';
 import useSWR from 'swr';
 import BlogSkeleton from './BlogSkeleton';
+import { fetcher } from '../../../utils/fetcher';
 
 
 const Blog = () => {

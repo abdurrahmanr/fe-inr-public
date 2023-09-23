@@ -8,7 +8,8 @@ export const toCapitalize = (word) => {
 export const underlineTitle =
 	'after:block after:h-[3px] after:w-14 after:bg-primary after:mt-[12px]';
 
-export const fetcher = (...args) => fetch(...args).then((res) => res.json());
+// export const fetcher = (url, params) =>
+// 	fetch(...args).then((res) => res.json());
 
 export const BASE_URL = 'https://inr.hmjti-uinam.com/api/public';
 

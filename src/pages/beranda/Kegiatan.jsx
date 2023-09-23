@@ -8,7 +8,8 @@ import picture6 from '../../assets/img/karya@beranda/6.jpeg';
 import picture7 from '../../assets/img/karya@beranda/7.jpeg';
 import picture8 from '../../assets/img/karya@beranda/8.jpeg';
 import picture9 from '../../assets/img/karya@beranda/9.jpeg';
-import { BASE_URL, fetcher } from '../../utils';
+import { BASE_URL } from '../../utils';
+import { fetcher } from '../../utils/fetcher';
 
 const Kegiatan = () => {
 

@@ -37,6 +37,11 @@
 	color: #fff;
 }
 
+.test .swiper-button-prev,
+.test .swiper-button-next {
+	@apply w-0 lg:!w-[25%];
+}
+
 .swiper-button-prev:after,
 .swiper-button-next:after {
 	font-size: 30px;

@@ -2,7 +2,8 @@ import SEOComponent from '../../components/SEO';
 import StrukturList from '../../components/profile/StrukturList';
 import { pengurus } from '../../constants';
 import useSWR from 'swr';
-import { BASE_URL, fetcher } from '../../utils';
+import { BASE_URL } from '../../utils';
+import { fetcher } from '../../utils/fetcher';
 
 const Struktur = () => {
 	const { data: struktur, error } = useSWR(`${BASE_URL}/bpo`, fetcher);

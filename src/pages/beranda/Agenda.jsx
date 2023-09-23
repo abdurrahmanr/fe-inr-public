@@ -1,4 +1,4 @@
-import { BASE_URL, convertDate, fetcher, underlineTitle } from '../../utils/index';
+import { BASE_URL, convertDate, underlineTitle } from '../../utils/index';
 import heroAgenda from '../../assets/heroAgenda.png';
 import Countdown from 'react-countdown';
 import Renderer from '../../components/Countdown';
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Separator } from '@radix-ui/react-separator';
 import calendarIcon from '../../assets/icons/calendar.svg';
 import useSWR from 'swr';
+import { fetcher } from '../../utils/fetcher';
 
 const Agenda = () => {
 	const { data, isLoading } = useSWR(`${BASE_URL}/home/agenda`, fetcher);
