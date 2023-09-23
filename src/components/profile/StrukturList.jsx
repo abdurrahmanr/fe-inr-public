@@ -47,6 +47,7 @@ const StrukturList = ({ title, data, divisi }) => {
 											// slidesOffsetAfter={750}
 											centeredSlides={true}
 											grabCursor
+											freeMode={true}
 											breakpoints={
 												{
 													1024: {
