@@ -10,8 +10,8 @@
 	margin: 0;
 }
 
-body::-webkit-scrollbar {
-	display: none;
+::-webkit-scrollbar {
+	@apply hidden;
 }
 
 .swiper-pagination-bullet-active {
@@ -37,6 +37,11 @@ body::-webkit-scrollbar {
 	color: #fff;
 }
 
+.test .swiper-button-prev,
+.test .swiper-button-next {
+	@apply w-10 lg:!w-[25%];
+}
+
 .swiper-button-prev:after,
 .swiper-button-next:after {
 	font-size: 30px;
@@ -44,7 +49,7 @@ body::-webkit-scrollbar {
 
 .test .swiper-button-prev,
 .test .swiper-button-next {
-	@apply mr-28;
+	@apply lg:mr-28;
 }
 
 .test .swiper-button-prev:after {
@@ -59,4 +64,8 @@ body::-webkit-scrollbar {
 
 .test .swiper-button-disabled {
 	@apply hidden;
+}
+
+.hamburger-react > div > div {
+	@apply !h-[3px];
 }

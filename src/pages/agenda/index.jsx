@@ -1,11 +1,16 @@
-import { dataAgenda } from '../../constants';
-import calendarIcon from '../../assets/icons/calendar.svg';
 import heroAgenda from '../../assets/heroAgenda.png';
 import Countdown from 'react-countdown';
 import Renderer from '../../components/Countdown';
 import SEOComponent from '../../components/SEO';
+import useSWR from 'swr';
+import Card from '../../components/agenda/Card';
+import { BASE_URL, convertDate } from '../../utils';
+import { fetcher } from '../../utils/fetcher';
 
 const Agenda = () => {
+
+	const { data, error, isLoading } = useSWR(`${BASE_URL}/home/agenda`, fetcher);
+
 	return (
 		<>
 			<SEOComponent title={'Agenda | Inready Workgroup'} />
@@ -23,18 +28,14 @@ const Agenda = () => {
 					</div>
 					<div className='col-span-full flex w-full flex-col gap-6 p-8 text-justify text-secondary lg:col-span-7 lg:mt-0 lg:p-0'>
 						<p className='text-xl font-semibold uppercase'>
-							Presentasi karya
+							{data?.data[0].title}
 						</p>
 						<p className='text-xs'>
-							Lorem ipsum dolor sit amet consectetur. A at libero
-							orci luctus sollicitudin posuere lectus libero
-							pellentesque. Tempus tellus urna mauris molestie
-							purus donec egestas. Morbi quisque magna lobortis
-							urna fringilla eget sed etiam.
+							{data?.data[0].description}
 						</p>
 						<p className='text-[13px]'>Kegiatan Dimulai dalam:</p>
 						<Countdown
-							date={'2024-02-01T01:02:03'}
+							date={convertDate(data?.data[0].time)}
 							renderer={Renderer}
 						/>
 					</div>
@@ -44,27 +45,8 @@ const Agenda = () => {
 						Agenda yang akan datang
 					</p>
 					<div className='mt-10 grid grid-cols-12 gap-6'>
-						{dataAgenda.map((data) => (
-							<div
-								key={data.id}
-								className='col-span-full rounded-[20px] bg-[#FBF6EA] px-6 py-[30px] sm:col-span-6 lg:col-span-4'
-							>
-								<p className='text-[13px] font-semibold leading-6'>
-									{data.title}
-								</p>
-								<div className='mt-2 flex flex-col gap-2 text-[10px]'>
-									<div className='flex items-center gap-[6px]'>
-										<img src={calendarIcon} alt='' />
-										<p className='mt-px font-light'>
-											{data.date}
-										</p>
-									</div>
-									<p className='text-greyCol/50'>
-										{data.description}
-									</p>
-								</div>
-							</div>
-						))}
+
+						<Card data={data} loading={isLoading} error={error} />
 					</div>
 				</div>
 			</div>

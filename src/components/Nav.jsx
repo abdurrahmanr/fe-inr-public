@@ -1,19 +1,18 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import { TriangleDownIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { TriangleDownIcon } from '@radix-ui/react-icons';
 import { NavLink, useLocation } from 'react-router-dom';
 import { links } from '../constants';
 import logo from '../assets/inr.png';
 import { boldNoRuin, toCapitalize } from '../utils';
 import AccordionComponent from './Accordion';
 import { useState } from 'react';
+import { Twirl as Hamburger } from 'hamburger-react'
 
-const Nav = () => {
+const DesktopNav = () => {
 	const location = useLocation();
-
-	const [show, setShow] = useState(false);
 	return (
 		<NavigationMenu.Root
-			className='fixed z-20 flex h-[80px] w-full items-center justify-between bg-white px-5 shadow sm:px-10 xl:px-[156px] 2xl:px-[348px]'
+			className='fixed z-20 hidden lg:flex h-[80px] w-full items-center justify-between bg-white px-5 shadow sm:px-10 xl:px-[156px] 2xl:px-[348px]'
 			orientation='vertical'
 		>
 			<div className='w-full'>
@@ -28,23 +27,23 @@ const Nav = () => {
 						</NavLink>
 					</NavigationMenu.Item>
 
-					<NavigationMenu.Item
+					{/* <NavigationMenu.Item
 						className='relative z-10 ml-auto flex lg:hidden'
 						onClick={() => {
 							setShow(!show);
 						}}
 					>
 						<HamburgerMenuIcon />
-					</NavigationMenu.Item>
+					</NavigationMenu.Item> */}
 
 					{/* Nav Desktop */}
-					<div className='hidden items-center gap-4 text-sm lg:flex'>
+					<div className='items-center gap-4 text-sm flex'>
 						{links.map((link) => {
 							if (link.type === 'link') {
 								return (
 									<NavigationMenu.Item
 										key={link.url}
-										className='rounded bg-opacity-0 px-4 py-2 transition duration-200 ease-in-out hover:bg-primary hover:bg-opacity-20'
+										className='rounded bg-opacity-0 px-4 py-2 transition duration-500 ease-in-out hover:bg-primary/20'
 									>
 										<NavLink
 											to={
@@ -69,11 +68,11 @@ const Nav = () => {
 							return (
 								<NavigationMenu.Item key={link.url}>
 									<NavigationMenu.Trigger
-										className={`group flex items-center rounded px-4 py-2 capitalize data-[state=open]:bg-primary data-[state=open]:bg-opacity-20 data-[state=open]:font-semibold data-[state=open]:text-black  ${
-											location.pathname.match('profile')
+										className={`group flex items-center rounded px-4 py-2 capitalize data-[state=open]:bg-primary/20 data-[state=open]:font-semibold data-[state=open]:text-black
+										${location.pathname.match('profile')
 												? 'font-semibold text-black'
 												: 'text-greyCol'
-										}`}
+											}`}
 										title={link.url}
 									>
 										<p
@@ -87,7 +86,7 @@ const Nav = () => {
 											aria-hidden
 										/>
 									</NavigationMenu.Trigger>
-									<NavigationMenu.Content className='absolute -ms-[50px] mt-4 flex animate-dropDownOut flex-col rounded-[7px] bg-white shadow outline outline-1 outline-[#D1D5DB] data-[state=open]:animate-dropDown'>
+									<NavigationMenu.Content className='absolute -ms-[50px] mt-4 flex animate-dropDownOut flex-col rounded-[7px] bg-white shadow outline outline-1 outline-[#D1D5DB] data-[state=open]:animate-dropDown overflow-hidden'>
 										{link.options.map((option) => (
 											<NavLink
 												key={option}
@@ -103,68 +102,99 @@ const Nav = () => {
 							);
 						})}
 					</div>
-
-					{/* Mobile Nav */}
-					{show && (
-						<div
-							className={`absolute top-[100px] -z-50 w-full animate-navDown flex-col gap-4 bg-white text-center shadow transition lg:hidden`}
-						>
-							{links.map((link) => {
-								if (link.type === 'link') {
-									return (
-										<NavigationMenu.Item
-											key={link.url}
-											className='rounded bg-opacity-0 px-4 py-2 transition duration-200 ease-in-out hover:bg-primary hover:bg-opacity-20'
-										>
-											<NavLink
-												to={
-													link.url === 'beranda'
-														? '/'
-														: link.url
-												}
-												className={({ isActive }) =>
-													isActive
-														? ' py-4 font-semibold'
-														: `py-4 text-greyCol hover:text-black ${boldNoRuin}`
-												}
-												title={toCapitalize(link.url)}
-												onClick={() => {
-													setShow(!show);
-												}}
-											>
-												{toCapitalize(link.url)}
-											</NavLink>
-										</NavigationMenu.Item>
-									);
-								}
-
-								return (
-									<AccordionComponent
-										key={link.url}
-										title={link.url}
-									>
-										{link.options.map((option) => (
-											<NavLink
-												key={option}
-												to={`${link.url}/${option}`}
-												className={`flex justify-center gap-4 py-2 capitalize`}
-												title={option}
-												onClick={() => {
-													setShow(!show);
-												}}
-											>
-												{option}
-											</NavLink>
-										))}
-									</AccordionComponent>
-								);
-							})}
-						</div>
-					)}
 				</NavigationMenu.List>
 			</div>
 		</NavigationMenu.Root>
 	);
 };
+
+const MobileNav = () => {
+	const [show, setShow] = useState(false);
+
+	return (
+		<nav className='h-[80px] fixed bg-white w-full z-50 lg:hidden flex'>
+			<div className='flex justify-between px-5 sm:px-10 h-full z-50 relative w-full items-center'>
+				<NavLink to='/'>
+					<img
+						src={logo}
+						alt='Logo Inready Workgroup'
+						className='h-[80px] hover:text-black'
+					/>
+				</NavLink>
+				<Hamburger toggled={show} toggle={setShow} size={28} color='#FFC400' rounded />
+			</div>
+			<div
+				className={`z-0 absolute left-0 flex w-full flex-col gap-4 bg-white text-center shadow transition-all duration-500 lg:hidden ${show ? `opacity-100 top-[75px]` : `opacity-0 -top-[1000px]`}`}
+			>
+				{links.map((link) => {
+					if (link.type === 'link') {
+						return (
+							<li
+								key={link.url}
+								className='rounded bg-opacity-0 px-4 py-2 transition duration-200 ease-in-out hover:bg-primary hover:bg-opacity-20 list-none'
+							>
+								<NavLink
+									to={
+										link.url === 'beranda'
+											? '/'
+											: link.url
+									}
+									className={({ isActive }) =>
+										isActive
+											? ' py-4 font-semibold'
+											: `py-4 text-greyCol hover:text-black ${boldNoRuin}`
+									}
+									title={toCapitalize(link.url)}
+									onClick={() => {
+										setShow(!show);
+									}}
+								>
+									{toCapitalize(link.url)}
+								</NavLink>
+							</li>
+						);
+					}
+
+					return (
+						<AccordionComponent
+							key={link.url}
+							title={link.url}
+							className={
+								`${location.pathname.match('profile')
+									? 'font-semibold text-black'
+									: 'text-greyCol'
+								}`
+							}
+						>
+							{link.options.map((option) => (
+								<NavLink
+									key={option}
+									to={`${link.url}/${option}`}
+									className={`flex justify-center gap-4 py-2 capitalize`}
+									title={option}
+									onClick={() => {
+										setShow(!show);
+									}}
+								>
+									{option}
+								</NavLink>
+							))}
+						</AccordionComponent>
+					);
+				})}
+			</div>
+		</nav >
+	)
+}
+
+const Nav = () => {
+
+	return (
+		<>
+			<DesktopNav />
+			<MobileNav />
+		</>
+	);
+}
 
 export default Nav;

@@ -1,8 +1,11 @@
 import * as Tabs from '@radix-ui/react-tabs';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import StrukturCard from '../../components/profile/StrukturCard';
 import SEOComponent from '../../components/SEO';
+import { fetchWithParams } from '../../utils/fetcher';
+import useSWR from 'swr';
 import { useState } from 'react';
+import { BASE_URL } from '../../utils';
+import ReactPaginate from 'react-paginate';
 
 const angkatan = [
 	'angkatan pendiri',
@@ -15,10 +18,12 @@ const angkatan = [
 	'angkatan 7',
 	'angkatan 8',
 	'angkatan 9',
+	'angkatan 10',
 ];
 
 const Anggota = () => {
-	// const [active, setActive] = useState(angkatan[0]);
+	const [queryParams, setQueryParams] = useState('')
+	const { data: members } = useSWR({ url: `${BASE_URL}/member`, params: queryParams }, fetchWithParams);
 
 	return (
 		<>
@@ -28,7 +33,7 @@ const Anggota = () => {
 					<p className='uppercase leading-[26px] text-greyCol'>
 						ANGGOTA KAMI
 					</p>
-					<p className='text-2xl capitalize leading-[62px] text-secondary'>
+					<p className='text-2xl capitalize leading-10 lg:leading-[62px] text-secondary'>
 						Anggota Inready Workgroup{' '}
 					</p>
 					<p className='font-normal normal-case leading-9 text-greyCol/50'>
@@ -39,7 +44,7 @@ const Anggota = () => {
 				</div>
 
 				<Tabs.Root
-					defaultValue={angkatan[1]}
+					defaultValue={angkatan[0]}
 					className='relative z-0 mt-11 w-full'
 				>
 					<div className='relative flex w-full overflow-x-auto'>
@@ -56,17 +61,31 @@ const Anggota = () => {
 						</Tabs.List>
 					</div>
 					<div className='my-7 grid w-full grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-3 lg:grid-cols-4'>
-						{[1, 2, 3, 4, 5, 6].map((data) => (
+						{members?.data?.map((data) => (
 							<Tabs.Content
 								className='relative flex justify-center'
-								key={data}
-								value='angkatan 1'
+								key={data.name}
+								value='angkatan pendiri'
 							>
-								<StrukturCard />
+								<StrukturCard {...data} angkatan={true} />
 							</Tabs.Content>
 						))}
 					</div>
 				</Tabs.Root>
+				<ReactPaginate
+					containerClassName={'pagination'}
+					pageClassName={'page-item'}
+					activeClassName={'active'}
+					// onPageChange={(event) => setPage(event.selected)}
+					pageCount={members?.meta.total_page}
+					breakLabel='...'
+					previousLabel='<'
+					nextLabel='>'
+					onPageChange={(e) => setQueryParams(`?page=${e.selected + 1}`)}
+					// onPageActive={(event) => console.log(event)}
+					// onClick={(event) => { console.log(event) }}
+					className='mx-auto mb-24 mt-12 flex w-fit items-center gap-5'
+				/>
 			</div>
 		</>
 	);

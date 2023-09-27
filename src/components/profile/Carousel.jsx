@@ -124,6 +124,7 @@ const Carousel = () => {
 							<img
 								src={data.image}
 								alt=''
+								loading='lazy'
 								className='h-full w-full object-cover'
 							/>
 						</div>
