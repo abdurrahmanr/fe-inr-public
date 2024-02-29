@@ -14,11 +14,7 @@ export const underlineTitle =
 export const BASE_URL = 'https://inr.hmjti-uinam.com/api/public';
 
 export const convertDate = (date) => {
-	return new Date(date).toLocaleDateString('id-ID', {
-		year: 'numeric',
-		day: 'numeric',
-		month: 'long',
-	});
+	return new Date(date).toLocaleDateString('id-ID');
 };
 
 // ${location.pathname.match('profile') ? 'font-semibold text-black' : 'text-greyCol'}
