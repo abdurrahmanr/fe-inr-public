@@ -22,7 +22,7 @@ const angkatan = [
 ];
 
 const Anggota = () => {
-	const [queryParams, setQueryParams] = useState('')
+	const [queryParams, setQueryParams] = useState('');
 	const { data: members } = useSWR({ url: `${BASE_URL}/member`, params: queryParams }, fetchWithParams);
 
 	return (

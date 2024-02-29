@@ -8,6 +8,12 @@ import calendarIcon from '../../assets/icons/calendar.svg';
 import useSWR from 'swr';
 import { fetcher } from '../../utils/fetcher';
 
+const mockData = [{
+	id: 1,
+	title: 'tes',
+	time: '02-02-2024'
+}];
+
 const Agenda = () => {
 	const { data, isLoading } = useSWR(`${BASE_URL}/home/agenda`, fetcher);
 
@@ -54,7 +60,7 @@ const Agenda = () => {
 					<p className='font-semibold text-yellowSecondary'>
 						Agenda yang akan datang
 					</p>
-					<div className='mt-9 flex h-full w-full flex-col justify-around rounded-t-[20px] outline outline-2 outline-[#6D6E76]/[.1]'>
+					<div className='mt-9 flex h-full w-full flex-col rounded-t-[20px] outline outline-2 outline-[#6D6E76]/[.1]'>
 						{data?.data.map((data) => (
 							<div key={data.id} className='flex flex-col text-secondary'>
 								<div className='px-9 py-7'>

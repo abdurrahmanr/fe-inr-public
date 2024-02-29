@@ -10,8 +10,12 @@
 	margin: 0;
 }
 
-::-webkit-scrollbar {
-	@apply hidden;
+*::-webkit-scrollbar {
+	@apply h-[6px] w-[6px] bg-transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	@apply rounded-full bg-primary/90;
 }
 
 .swiper-pagination-bullet-active {
